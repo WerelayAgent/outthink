@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Privacy | OutThink AI</title>
+<meta name="description" content="How OutThink AI handles wallet identity, case content, AI processing and demo data.">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="/styles.css">
+<style>
+.legal-hero{padding:120px 0 40px}
+.legal-hero h1{font-size:clamp(32px,5vw,52px);margin:10px 0 12px}
+.legal-hero p{color:var(--text-muted);max-width:640px}
+.legal-body{padding:0 0 90px}
+.legal-body h2{font-size:22px;margin:34px 0 10px}
+.legal-body p,.legal-body li{color:var(--text-muted);font-size:15px;line-height:1.75}
+.legal-body ul{padding-left:20px;margin:8px 0}
+.legal-body a{color:var(--primary)}
+.legal-back{display:inline-flex;gap:8px;align-items:center;margin-top:36px;color:var(--primary);text-decoration:none;font-weight:600}
+</style>
+</head>
+<body>
+<main class="wrap">
+  <section class="legal-hero">
+    <span style="font-size:12px;letter-spacing:.18em;text-transform:uppercase;color:var(--primary)">Legal</span>
+    <h1>Privacy Notice</h1>
+    <p>What OutThink AI stores, why it stores it, and what never leaves your device or the vault.</p>
+  </section>
+  <section class="legal-body">
+    <h2>Wallet identity</h2>
+    <p>To submit or review a case you connect a wallet and sign a one-time message. We store the public wallet address, the signature check result and the profile details you enter (name, profession, email). We never ask for, see or store your private key or seed phrase.</p>
+    <h2>Case content</h2>
+    <p>Case text is scanned for personal and health information before it is stored. Raw case text is kept in the private vault and is not published. Only a content hash, the profession, aggregate difficulty statistics and the author's public profile are shown publicly.</p>
+    <h2>Attachments</h2>
+    <p>Uploaded files are stored privately and can only be downloaded by the wallet that uploaded them or by an administrator. Each file is fingerprinted with SHA-256 and a PII scan result is recorded with it.</p>
+    <h2>AI processing</h2>
+    <p>Case prompts and questions are sent to third-party model providers through OpenRouter so the panel can answer and grade them. The expert answer is sent to the grading model with the rubric. If you do not want a case processed by external models, do not submit it.</p>
+    <h2>Demo data</h2>
+    <p>Some showcase rows are seeded demo content, marked as demo in the interface and counted separately from real submissions. They are illustrative and not real model output.</p>
+    <h2>Your control</h2>
+    <p>Disconnect your wallet at any time. To request removal of a submitted case or profile, contact us through the channel on the <a href="/contact">contact page</a>.</p>
+    <a class="legal-back" href="/">Back to OutThink AI</a>
+  </section>
+</main>
+</body>
+</html>

@@ -1,0 +1,20 @@
+{
+  "name": "outthink-ai",
+  "version": "1.0.0",
+  "description": "OutThink AI ($OUTTHINK) - High-Stakes Human Expert Evaluation Arena and Private Benchmark Licensing Platform",
+  "main": "index.html",
+  "scripts": {
+    "start": "serve .",
+    "dev": "serve ."
+  },
+  "keywords": [
+    "outthink",
+    "outthink-ai",
+    "crypto",
+    "ai-benchmark",
+    "frontier-ai",
+    "expert-evaluation"
+  ],
+  "author": "OutThink AI Team",
+  "license": "MIT"
+}

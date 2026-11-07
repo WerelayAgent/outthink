@@ -1,0 +1,77 @@
+{
+  "version": 2,
+  "rewrites": [
+    {
+      "source": "/api/health",
+      "destination": "/api/health.json"
+    },
+    {
+      "source": "/api/stats",
+      "destination": "/api/stats.json"
+    },
+    {
+      "source": "/api/cases",
+      "destination": "/api/cases.json"
+    },
+    {
+      "source": "/api/leaderboard",
+      "destination": "/api/leaderboard.json"
+    },
+    {
+      "source": "/api/sprints",
+      "destination": "/api/sprints.json"
+    },
+    {
+      "source": "/api/reports/monthly",
+      "destination": "/api/reports/monthly.json"
+    },
+    {
+      "source": "/api/buyers/catalog",
+      "destination": "/api/buyers/catalog.json"
+    },
+    {
+      "source": "/contact",
+      "destination": "/contact.html"
+    },
+    {
+      "source": "/privacy",
+      "destination": "/privacy.html"
+    },
+    {
+      "source": "/terms",
+      "destination": "/terms.html"
+    },
+    {
+      "source": "/ai-labs",
+      "destination": "/index.html"
+    },
+    {
+      "source": "/bounty-sprints",
+      "destination": "/index.html"
+    },
+    {
+      "source": "/leaderboard",
+      "destination": "/index.html"
+    },
+    {
+      "source": "/monthly-report",
+      "destination": "/index.html"
+    },
+    {
+      "source": "/onboarding",
+      "destination": "/index.html"
+    },
+    {
+      "source": "/review-queue",
+      "destination": "/index.html"
+    },
+    {
+      "source": "/share-studio",
+      "destination": "/index.html"
+    },
+    {
+      "source": "/submit",
+      "destination": "/index.html"
+    }
+  ]
+}

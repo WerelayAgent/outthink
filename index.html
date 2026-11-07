@@ -1,0 +1,2206 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>OutThink AI: Experts vs AI</title>
+<meta name="description" content="High-stakes expert evaluation arena and private benchmark dataset licensing platform on Robinhood Chain.">
+<link rel="canonical" href="https://outthinkai.tech/">
+
+<!-- Branded SVG & ICO Favicon -->
+<link rel="icon" type="image/svg+xml" href="/favicon.svg" id="dynamicFavicon">
+<link rel="alternate icon" href="/favicon.svg" id="dynamicFaviconAlt">
+
+<!-- Open Graph / Facebook -->
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://outthinkai.tech/">
+<meta property="og:title" content="OutThink AI: Experts vs AI">
+<meta property="og:description" content="High-stakes expert evaluation arena and private benchmark dataset licensing platform on Robinhood Chain.">
+<meta property="og:image" content="https://outthinkai.tech/og-image.svg">
+
+<!-- Twitter Card -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:url" content="https://outthinkai.tech/">
+<meta name="twitter:site" content="@outthinkai">
+<meta name="twitter:title" content="OutThink AI: Experts vs AI">
+<meta name="twitter:description" content="High-stakes expert evaluation arena and private benchmark dataset licensing platform on Robinhood Chain.">
+<meta name="twitter:image" content="https://outthinkai.tech/og-image.svg">
+
+<meta name="theme-color" content="#FAF6EC" id="themeColorMeta">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<!-- Curated Topic Typography Themes + OutThink AI brand typography (Cormorant Garamond display, Poppins body), loaded async to keep render-blocking zero -->
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,600;0,9..40,700;1,9..40,400&family=Fraunces:ital,opsz,wght@0,9..144,600;0,9..144,700;1,9..144,400&family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600&family=Instrument+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&family=JetBrains+Mono:wght@400;500;600&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,600;0,6..72,700;1,6..72,400&family=Outfit:wght@400;500;600;700&family=Poppins:wght@300;400;500;600;700&family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400&family=Space+Grotesk:wght@500;600;700&family=Syne:wght@600;700;800&family=Unbounded:wght@400;600;700;800&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+<noscript><link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,600;0,9..40,700;1,9..40,400&family=Fraunces:ital,opsz,wght@0,9..144,600;0,9..144,700;1,9..144,400&family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600&family=Instrument+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&family=JetBrains+Mono:wght@400;500;600&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,600;0,6..72,700;1,6..72,400&family=Outfit:wght@400;500;600;700&family=Poppins:wght@300;400;500;600;700&family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400&family=Space+Grotesk:wght@500;600;700&family=Syne:wght@600;700;800&family=Unbounded:wght@400;600;700;800&display=swap" rel="stylesheet"></noscript>
+<link rel="stylesheet" href="/styles.css">
+<script>
+  (function() {
+    try {
+      var savedFont = localStorage.getItem("outthink_font_theme") || localStorage.getItem("outthink_theme") || "benchmark";
+      document.documentElement.setAttribute("data-theme", savedFont);
+      document.documentElement.setAttribute("data-font-theme", savedFont);
+
+      var savedMode = localStorage.getItem("outthink_color_mode") || "light";
+      var effectiveMode = savedMode;
+      if (savedMode === "system") {
+        effectiveMode = (window.matchMedia && window.matchMedia("(prefers-color-scheme: light)").matches) ? "light" : "dark";
+      }
+      document.documentElement.setAttribute("data-color-mode", effectiveMode);
+      document.documentElement.setAttribute("data-theme-mode", savedMode);
+      document.documentElement.style.colorScheme = effectiveMode;
+      var metaTheme = document.getElementById("themeColorMeta");
+      if (metaTheme) {
+        metaTheme.setAttribute("content", effectiveMode === "light" ? "#FAF6EC" : "#15110A");
+      }
+
+      // Dynamic favicon resolution based on theme and domain
+      var normDomain = (savedFont || "").toLowerCase().trim();
+      var modeKey = effectiveMode === "light" ? "light" : "dark";
+      var logoFile = "logo-default-benchmark-" + modeKey + ".png";
+      if (normDomain.indexOf("med") !== -1 || normDomain.indexOf("clin") !== -1) logoFile = "logo-medicine-" + modeKey + ".png";
+      else if (normDomain.indexOf("law") !== -1 || normDomain.indexOf("juris") !== -1 || normDomain.indexOf("legal") !== -1) logoFile = "logo-law-" + modeKey + ".png";
+      else if (normDomain.indexOf("soft") !== -1 || normDomain.indexOf("system") !== -1 || normDomain.indexOf("eng") !== -1) logoFile = "logo-systems-" + modeKey + ".png";
+      else if (normDomain.indexOf("tax") !== -1 || normDomain.indexOf("finan") !== -1 || normDomain.indexOf("account") !== -1) logoFile = "logo-tax-financial-" + modeKey + ".png";
+      else if (normDomain.indexOf("trade") !== -1 || normDomain.indexOf("diag") !== -1 || normDomain.indexOf("mech") !== -1) logoFile = "logo-diagnostics-trades-" + modeKey + ".png";
+
+      var fav = document.getElementById("dynamicFavicon");
+      if (fav) {
+        fav.href = "/assets/" + logoFile;
+        fav.type = "image/png";
+      }
+      var favAlt = document.getElementById("dynamicFaviconAlt");
+      if (favAlt) {
+        favAlt.href = "/assets/" + logoFile;
+        favAlt.type = "image/png";
+      }
+      document.addEventListener("DOMContentLoaded", function() {
+        var logos = document.querySelectorAll("[data-dynamic-logo]");
+        logos.forEach(function(img) {
+          img.src = "/assets/" + logoFile;
+        });
+      });
+    } catch (e) {}
+  })();
+</script>
+<script src="/icons.js" defer></script>
+<style>
+:root {
+  --bg: #FAF6EC;
+  --surface: #FFFDF8;
+  --surface-2: #F6EFDD;
+  --border: #DDD0AE;
+  --text: #1C160D;
+  --text-muted: #746957;
+  --primary: #8F6221;
+  --secondary: #2F5C60;
+  --alert: #9B4029;
+  --primary-contrast: #FFFDF8;
+  --glow: rgba(168, 118, 42, 0.22);
+
+  --paper: var(--surface);
+  --ink: var(--text);
+  --ink-2: var(--text-muted);
+  --ink-3: var(--text-muted);
+  --line: var(--border);
+  --line-2: var(--border);
+  --human: var(--primary);
+  --human-soft: color-mix(in srgb, var(--primary) 18%, var(--surface));
+  --machine: var(--secondary);
+  --machine-soft: color-mix(in srgb, var(--secondary) 18%, var(--surface));
+  --shadow: 0 20px 40px -32px rgba(28, 22, 13, 0.3);
+}
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body { margin: 0; background: var(--bg); color: var(--text); font-family: var(--body); font-size: 17px; line-height: 1.55; -webkit-font-smoothing: antialiased; overflow-x: hidden; }
+h1,h2,h3,h4 { font-family: var(--display); font-weight: 700; margin: 0; letter-spacing: -0.015em; line-height: 1.05; color: var(--text); }
+p { margin: 0; }
+a { color: var(--primary); }
+a:focus-visible, button:focus-visible { outline: 2px solid var(--secondary); outline-offset: 3px; border-radius: 8px; }
+.wrap { max-width: 1240px; margin: 0 auto; padding: 0 32px; }
+.muted { color: var(--text-muted); }
+em.serif { font-family: Georgia, 'Times New Roman', serif; font-weight: 400; font-style: italic; letter-spacing: 0; color: var(--primary); }
+
+/* progress + nav */
+.progress { position: fixed; top: 0; left: 0; height: 3px; width: 100%; background: var(--primary); transform-origin: left; transform: scaleX(0); z-index: 60; }
+header.nav { position: sticky; top: 0; z-index: 50; background: color-mix(in srgb, var(--bg) 85%, transparent); backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px); border-bottom: 1px solid var(--border); transition: border-color .3s, background-color .3s; }
+header.nav.scrolled { border-bottom-color: var(--border); }
+.nav-in { display: flex; align-items: center; justify-content: space-between; gap: 16px; padding: 16px 32px; max-width: 1240px; margin: 0 auto; flex-wrap: wrap; }
+.logo { display: flex; align-items: center; gap: 10px; text-decoration: none; color: var(--text); font-family: var(--display); font-weight: 700; font-size: 19px; }
+.nav-links{display:flex;gap:6px;flex-wrap:wrap}
+.nav-links a{color:var(--ink-2);text-decoration:none;font-size:14px;padding:8px 12px;border-radius:999px;transition:background .2s,color .2s}
+.nav-links a:hover{background:var(--paper);color:var(--ink)}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:48px;padding:0 24px;border-radius:var(--radius-md,10px);font-weight:600;font-size:16px;text-decoration:none;border:0;cursor:pointer;font-family:var(--body);transition:transform .25s cubic-bezier(.2,.8,.2,1),box-shadow .25s,background .25s,color .25s,border-color .25s}
+.btn:hover{transform:translateY(-2px)}
+.btn:disabled, button:disabled{opacity:0.55;cursor:not-allowed;pointer-events:none;transform:none !important;box-shadow:none !important}
+.btn-primary{background:var(--primary);color:var(--primary-contrast,#fff)}
+.btn-primary:hover{box-shadow:0 14px 30px -12px var(--glow);color:var(--primary-contrast,#fff)}
+.btn-human{background:var(--primary);color:var(--primary-contrast,#fff);border:1px solid var(--primary)}
+.btn-human:hover{background:color-mix(in srgb, var(--primary) 88%, white);border-color:color-mix(in srgb, var(--primary) 88%, white);box-shadow:0 14px 30px -12px var(--glow);color:var(--primary-contrast,#fff);transform:translateY(-2px)}
+.btn-human:active{background:color-mix(in srgb, var(--primary) 88%, black);border-color:color-mix(in srgb, var(--primary) 88%, black);color:var(--primary-contrast,#fff);transform:translateY(1px)}
+.btn-human:focus-visible{outline:2px solid var(--primary);outline-offset:3px}
+.btn-human:disabled,.btn-human[disabled]{opacity:0.55;cursor:not-allowed;pointer-events:none;transform:none !important;box-shadow:none !important;background:color-mix(in srgb, var(--primary) 40%, var(--surface-2, transparent));border-color:color-mix(in srgb, var(--primary) 30%, transparent);color:color-mix(in srgb, var(--primary-contrast,#fff) 65%, transparent)}
+.btn-human.loading{position:relative;pointer-events:none;color:transparent !important}
+.btn-human.loading::after{content:'';position:absolute;width:18px;height:18px;border:2px solid var(--primary-contrast,#fff);border-right-color:transparent;border-radius:50%;animation:btnSpin .75s linear infinite}
+.btn-ghost{background:transparent;color:var(--text);border:1px solid var(--border)}
+.btn-ghost:hover{background:var(--surface-2);color:var(--text);border-color:var(--primary)}
+
+/* hero */
+.hero{position:relative;overflow:hidden;padding:64px 0 96px}
+.dots{position:absolute;inset:0;pointer-events:none;background-image:radial-gradient(rgba(168,118,42,.30) 1.2px,transparent 1.3px);background-size:26px 26px;-webkit-mask-image:radial-gradient(420px circle at var(--mx,70%) var(--my,40%),#000 0%,transparent 70%);mask-image:radial-gradient(420px circle at var(--mx,70%) var(--my,40%),#000 0%,transparent 70%);transition:-webkit-mask-position .2s}
+.dots-base{position:absolute;inset:0;pointer-events:none;background-image:radial-gradient(rgba(122,94,44,.14) 1px,transparent 1.1px);background-size:26px 26px}
+.hero-grid{position:relative;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,480px),1fr));gap:64px;align-items:center}
+.chip{display:inline-flex;align-items:center;gap:10px;padding:8px 16px;border-radius:999px;background:var(--paper);border:1px solid var(--line);font-size:14px;color:var(--ink-2)}
+.live{width:8px;height:8px;border-radius:50%;background:var(--primary);color:var(--primary-contrast,#fff);display:inline-block;flex-shrink:0;animation:ping 1.8s ease-out infinite}
+.live:not(:empty){width:auto;height:auto;padding:4px 10px;border-radius:999px;background:color-mix(in srgb, var(--primary) 14%, transparent);color:var(--primary);border:1px solid color-mix(in srgb, var(--primary) 28%, transparent);font-size:13px;font-weight:600;display:inline-flex;align-items:center;gap:6px}
+@keyframes ping{0%{box-shadow:0 0 0 0 color-mix(in srgb, var(--primary) 55%, transparent)}100%{box-shadow:0 0 0 10px color-mix(in srgb, var(--primary) 0%, transparent)}}
+.headline{font-size:clamp(40px,5.8vw,82px);line-height:.98;margin-top:24px}
+.headline .ln{display:block;overflow:hidden;padding-bottom:.06em}
+.headline .ln>span{display:inline-block;transform:translateY(105%);animation:lineUp 1.1s cubic-bezier(.2,.85,.2,1) forwards}
+.headline .ln:nth-child(2)>span{animation-delay:.12s}
+.headline .ln:nth-child(3)>span{animation-delay:.24s}
+@keyframes lineUp{to{transform:none}}
+.fade-in{opacity:0;transform:translateY(16px);animation:fadeUp .55s cubic-bezier(.2,.8,.2,1) forwards}
+@keyframes fadeUp{to{opacity:1;transform:none}}
+
+/* duel panel */
+.duel{position:relative;background:var(--paper);border:1px solid var(--line);border-radius:var(--radius-xl,22px);padding:26px;box-shadow:var(--shadow);transform-style:preserve-3d;transition:transform .4s cubic-bezier(.2,.8,.2,1)}
+.duel-top{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap}
+.tag{padding:4px 12px;border-radius:999px;font-size:13px;font-weight:600}
+.tag-m, .tag.tag-m{background:color-mix(in srgb, var(--primary) 14%, transparent);color:var(--primary);border:1px solid color-mix(in srgb, var(--primary) 28%, transparent)}
+.review-card .badge-tag{background:color-mix(in srgb, var(--primary) 14%, transparent)!important;color:var(--primary)!important;border-color:color-mix(in srgb, var(--primary) 28%, transparent)!important}
+.locked{margin-top:16px;padding:16px;border-radius:14px;background:var(--surface-2);border:1px dashed var(--border);display:flex;flex-direction:column;gap:8px}
+.bl{height:9px;border-radius:5px;background:var(--border);filter:blur(2.2px)}
+.rows{margin-top:20px;display:flex;flex-direction:column;gap:14px}
+.row{display:grid;grid-template-columns:minmax(104px,max-content) minmax(0,1fr) auto;gap:12px;align-items:center;font-size:14px}
+.row .name, #duel .row span.name{display:inline-flex;align-items:center;gap:8px;white-space:nowrap;line-height:1;font-weight:600;color:var(--text);flex-shrink:0}
+.row .dot{width:7px;height:7px;border-radius:50%;background:var(--line-2);flex-shrink:0;transition:background .3s}
+.row.active .dot{background:var(--machine);animation:ping2 1s infinite}
+@keyframes ping2{0%{box-shadow:0 0 0 0 rgba(47,91,214,.5)}100%{box-shadow:0 0 0 7px rgba(47,91,214,0)}}
+#duel .row .bar, .row .bar{width:90%;max-width:92%}
+.bar{height:6px;border-radius:3px;background:var(--surface-2);overflow:hidden;position:relative}
+.bar>i{position:absolute;inset:0;background:linear-gradient(90deg,var(--border),var(--machine));transform-origin:left;transform:scaleX(0)}
+.bar>i.fill{animation:barFill var(--dur,1100ms) cubic-bezier(.2,.7,.3,1) both}
+@keyframes barFill{from{transform:scaleX(0)}to{transform:scaleX(1)}}
+.verdict{justify-self:end;padding:4px 12px;border-radius:999px;font-size:13px;font-weight:700;white-space:nowrap;display:inline-flex;align-items:center;line-height:1;opacity:0;transform:scale(.5);transition:opacity .25s,transform .45s cubic-bezier(.3,1.6,.4,1)}
+.verdict.show{opacity:1;transform:scale(1)}
+.v-wrong{background:color-mix(in srgb, var(--alert) 20%, transparent);color:var(--alert);border:1px solid color-mix(in srgb, var(--alert) 38%, transparent)}
+.v-right{background:color-mix(in srgb, var(--secondary) 20%, transparent);color:var(--secondary);border:1px solid color-mix(in srgb, var(--secondary) 38%, transparent)}
+.stamp{margin-top:22px;padding:14px 16px;border-radius:14px;border:1.5px solid var(--primary);background:var(--surface-2);display:flex;gap:14px;align-items:center;opacity:0;transform:translateY(10px) rotate(-1.5deg);transition:opacity .5s,transform .6s cubic-bezier(.3,1.5,.4,1)}
+.stamp.show{opacity:1;transform:none}
+.float-badge{position:absolute;right:-18px;top:-22px;background:var(--surface-2);color:var(--text);border:1px solid var(--border);border-radius:14px;padding:10px 14px;font-size:13px;box-shadow:var(--shadow);transform:translateZ(40px);animation:bob 5s ease-in-out infinite}
+@keyframes bob{0%,100%{translate:0 0}50%{translate:0 -8px}}
+
+/* ticker */
+.ticker{border-top:1px solid var(--line);border-bottom:1px solid var(--line);background:var(--paper);overflow:hidden;padding:18px 0}
+.ticker-track{display:flex;gap:48px;width:max-content;animation:mq 42s linear infinite}
+.ticker:hover .ticker-track{animation-play-state:paused}
+.ticker-item{display:flex;align-items:center;gap:12px;font-family:var(--display);font-size:18px;white-space:nowrap;color:var(--ink-2)}
+.ticker-item svg{flex-shrink:0}
+.ticker-item svg,
+.ticker-item svg *{stroke:var(--primary)}
+@keyframes mq{to{transform:translateX(-50%)}}
+
+/* sections */
+section{position:relative}
+.sec-pad{padding:100px 0}
+.sec-title{font-size:clamp(32px,4vw,54px);max-width:18em}
+.lead{font-size:19px;color:var(--ink-2);max-width:36em;margin-top:20px}
+.reveal{opacity:0;transform:translateY(34px);transition:opacity .9s cubic-bezier(.2,.8,.2,1),transform .9s cubic-bezier(.2,.8,.2,1)}
+.reveal.in{opacity:1;transform:none}
+
+/* pinned chapters */
+.pin{height:420vh}
+.pin-stage{position:sticky;top:0;height:100vh;display:flex;align-items:center;overflow:hidden}
+.pin-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,440px),1fr));gap:56px;align-items:center;width:100%}
+.chapters{display:flex;gap:8px;flex-wrap:wrap;margin-top:28px}
+.chapters button{font-family:var(--body);font-size:14px;font-weight:600;padding:10px 16px;min-height:44px;border-radius:999px;border:1px solid var(--border);background:var(--surface-2);color:var(--text-muted);cursor:pointer;transition:all .25s ease}
+.chapters button:hover{background:var(--surface);color:var(--text);border-color:var(--primary)}
+.chapters button.on{background:var(--primary);color:var(--primary-contrast,#fff);border-color:var(--primary);box-shadow:0 4px 16px var(--glow)}
+.rail{margin-top:22px;height:3px;background:var(--line);border-radius:2px;overflow:hidden;max-width:440px}
+.rail>i{display:block;height:100%;background:var(--primary);transform-origin:left;transform:scaleX(var(--p,0))}
+.ch-text{position:relative;min-height:230px;margin-top:30px}
+.ch{position:absolute;inset:0;opacity:0;transform:translateY(24px);transition:opacity .5s,transform .6s cubic-bezier(.2,.8,.2,1);pointer-events:none}
+.ch.on{opacity:1;transform:none;pointer-events:auto}
+.ch .num{font-family:var(--display);font-size:15px;color:var(--primary)}
+.ch h3{font-size:clamp(26px,3vw,38px);margin-top:10px}
+.ch p{color:var(--ink-2);margin-top:14px;max-width:30em}
+.stack{position:relative;height:480px;perspective:1400px}
+.card3d{position:absolute;left:50%;top:50%;width:min(420px,88%);height:300px;margin-left:calc(min(420px,88%) / -2);margin-top:-150px;border-radius:22px;background:var(--paper);border:1px solid var(--line);box-shadow:var(--shadow);padding:24px;display:flex;flex-direction:column;gap:14px;will-change:transform,opacity;transform-origin:50% 100%}
+.card3d .hud{display:flex;justify-content:space-between;font-family:var(--mono);font-size:12px;color:var(--ink-3)}
+.card3d h4{font-family:var(--display);font-size:22px;margin:0}
+.mini-rows{display:flex;flex-direction:column;gap:9px;margin-top:auto}
+.mini{display:flex;align-items:center;gap:10px;font-size:14px}
+.mini .b{flex:1;height:6px;border-radius:3px;background:var(--surface-2);overflow:hidden}
+.mini .b i{display:block;height:100%;background:var(--machine)}
+.reviewers{display:flex;gap:10px;margin-top:auto}
+.av{width:54px;height:54px;border-radius:50%;background:var(--machine-soft);display:flex;align-items:center;justify-content:center;font-family:var(--display);font-size:15px;color:var(--secondary);border:2px solid var(--border);box-shadow:0 0 0 1px var(--line)}
+.av.ok{background:color-mix(in srgb, var(--primary) 18%, var(--surface));color:var(--primary)}
+
+/* index */
+.index-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,420px),1fr));gap:56px;align-items:start;margin-top:56px}
+.panel{background:var(--paper);border:1px solid var(--line);border-radius:22px;padding:30px;box-shadow:var(--shadow)}
+.ix{display:flex;flex-direction:column;gap:20px}
+.ix-row{display:grid;grid-template-columns:28px 1fr auto;gap:14px;align-items:center}
+.ix-rank{font-family:var(--display);font-size:14px;color:var(--ink-3)}
+.ix-bar{grid-column:2 / 4;height:12px;border-radius:6px;background:var(--surface-2);overflow:hidden}
+.ix-bar i{display:block;height:100%;border-radius:6px;background:linear-gradient(90deg,var(--secondary),var(--primary));transform-origin:left;transform:scaleX(0);transition:transform 1.6s cubic-bezier(.2,.8,.2,1)}
+.in .ix-bar i{transform:scaleX(1)}
+.ix-val{font-family:var(--display);font-weight:500}
+.share{display:flex;gap:16px;align-items:center;padding:18px;border-radius:18px;background:var(--surface-2);color:var(--text);border:1px solid var(--border);max-width:400px;margin-top:28px;cursor:pointer;transition:transform 0.2s}
+.share:hover{transform:translateY(-2px)}
+.share .ico{width:54px;height:54px;border-radius:14px;background:rgba(255,255,255,.1);display:flex;align-items:center;justify-content:center;flex-shrink:0}
+
+/* terminal */
+.term{background:var(--surface-2);color:var(--text);border-radius:22px;overflow:hidden;box-shadow:var(--shadow);font-family:var(--mono);font-size:14px;border:1px solid var(--border)}
+.term-top{display:flex;justify-content:space-between;align-items:center;padding:14px 20px;border-bottom:1px solid var(--border);color:var(--text-muted);font-size:12px;gap:10px;flex-wrap:wrap}
+.term-top .lights{display:flex;gap:7px}
+.term-top .lights span{width:11px;height:11px;border-radius:50%;background:var(--border)}
+.term-body{padding:22px 20px 26px;display:flex;flex-direction:column;gap:12px;min-height:330px}
+.tl{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:16px;opacity:0;transform:translateX(-8px);transition:opacity .4s,transform .4s}
+.tl.show{opacity:1;transform:none}
+.tl .k{color:var(--text-muted)}
+.tl .v{color:var(--text)}
+.st{font-size:12px;padding:2px 8px;border-radius:6px;align-self:center}
+.st.ack{background:color-mix(in srgb, var(--secondary) 20%, transparent);color:var(--secondary)}
+.st.pend{background:color-mix(in srgb, var(--primary) 20%, transparent);color:var(--primary)}
+.cmd{color:var(--primary)}
+.cursor{display:inline-block;width:9px;height:17px;background:var(--primary);vertical-align:-3px;margin-left:4px;animation:blink 1s steps(2) infinite}
+@keyframes blink{50%{opacity:0}}
+
+/* tiers */
+.tiers{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr));gap:22px;margin-top:52px}
+.tier{position:relative;padding:28px;border-radius:22px;background:var(--paper);border:1px solid var(--line);display:flex;flex-direction:column;gap:12px;transition:transform .4s cubic-bezier(.2,.8,.2,1),box-shadow .4s;transform-style:preserve-3d}
+.tier:hover{box-shadow:var(--shadow)}
+.tier .lvl{font-family:var(--display);font-size:14px;color:var(--ink-3)}
+.tier h3{font-size:22px}
+.tier p{color:var(--ink-2)}
+.tier.top{border:1.5px solid var(--primary)}
+.tier.top .lvl{color:var(--primary)}
+.mult{margin-top:auto;font-family:var(--display);font-size:13px;color:var(--ink-3)}
+
+/* horizontal token flow */
+.hpin{height:300vh;background:var(--bg);color:var(--text)}
+.hstage{position:sticky;top:0;height:100vh;overflow:hidden;display:flex;flex-direction:column;justify-content:center;gap:40px}
+.htrack{display:flex;gap:28px;padding:0 32px;will-change:transform}
+.hcard{flex:0 0 min(440px,82vw);min-height:340px;border-radius:24px;padding:32px;background:var(--surface);border:1px solid var(--border);display:flex;flex-direction:column;gap:14px}
+.hcard .n{font-family:var(--display);font-size:56px;color:var(--primary);line-height:1}
+.hcard h3{font-size:24px}
+.hcard p{color:var(--text-muted)}
+.hcard.big{flex-basis:min(560px,86vw);background:var(--primary);color:var(--primary-contrast,#fff);border-color:var(--primary)}
+.hcard.big h3{color:var(--accent-contrast,#fff)}
+.hcard.big p{color:var(--primary-contrast,rgba(255,255,255,0.88))}
+.hrail{height:2px;background:var(--border);margin:0 32px;position:relative}
+.hrail i{position:absolute;inset:0;background:var(--primary);transform-origin:left;transform:scaleX(var(--hp,0))}
+
+/* token */
+.supply{font-family:var(--display);font-size:clamp(30px,7vw,96px);font-weight:800;letter-spacing:-.03em;line-height:1;overflow-wrap:anywhere}
+.alloc{display:flex;gap:4px;height:26px;margin-top:30px;border-radius:13px;overflow:hidden}
+.alloc span{height:100%;transform-origin:left;transform:scaleX(0);transition:transform 1.4s cubic-bezier(.2,.8,.2,1)}
+.in .alloc span{transform:scaleX(1)}
+.legend{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,230px),1fr));gap:18px 28px;margin-top:28px;font-size:15px}
+.lg{display:flex;gap:12px}
+.lg i{width:12px;height:12px;border-radius:3px;margin-top:6px;flex-shrink:0}
+.lg p{color:var(--ink-3);font-size:14px}
+
+/* labs */
+.labs{border-radius:30px;background:linear-gradient(135deg, var(--surface) 0%, var(--surface-2) 100%);border:1px solid var(--border);color:var(--text);padding:60px;position:relative;overflow:hidden;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,380px),1fr));gap:40px;align-items:center}
+.labs::after{content:"";position:absolute;width:520px;height:520px;right:-160px;top:-200px;border-radius:50%;border:1px solid rgba(255,255,255,.15);box-shadow:0 0 0 60px rgba(255,255,255,.03),0 0 0 120px rgba(255,255,255,.02);animation:spinslow 40s linear infinite;pointer-events:none}
+@keyframes spinslow{to{transform:rotate(360deg)}}
+.labs p{color:var(--text-muted)}
+.labs .btn-ghost{color:var(--text);border-color:var(--border)}
+.labs .btn-ghost:hover{background:var(--surface-2);color:var(--text);border-color:var(--primary)}
+.labs .btn-primary{background:var(--primary);color:var(--primary-contrast,#fff)}
+
+/* footer */
+.foot-big{font-size:clamp(40px,7.5vw,112px);line-height:.95;letter-spacing:-.03em}
+.foot-big .w{display:inline-block;opacity:.55;transition:opacity .5s}
+.foot-big .w.lit{opacity:1}
+footer .meta{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:16px;font-size:14px;color:var(--ink-3);border-top:1px solid var(--line);padding:28px 0 40px;margin-top:64px}
+
+/* Mobile & tablet: app-like static layout, swipeable flow, no scrubbing or looping paints */
+@media (max-width: 1023px) {
+  header.nav{background:var(--bg);backdrop-filter:none;-webkit-backdrop-filter:none}
+  .pin{height:auto}
+  .pin-stage{position:static;height:auto;padding:64px 0}
+  .rail,.hrail{display:none}
+  .ch-text{min-height:auto;margin-top:24px}
+  .ch{position:relative;inset:auto;opacity:1;transform:none;pointer-events:auto;margin-bottom:26px}
+  .stack{height:auto;perspective:none}
+  .card3d{position:relative;left:auto;top:auto;margin:0 auto 18px;transform:none;opacity:1;will-change:auto}
+  .hpin{height:auto}
+  .hstage{position:static;height:auto;overflow:visible;padding:48px 0;gap:22px}
+  .htrack{width:100%;overflow-x:auto;scroll-snap-type:x mandatory;will-change:auto;padding:0 16px;-webkit-overflow-scrolling:touch}
+  .hcard{scroll-snap-align:center}
+  .ticker-track{animation:none}
+  .live{animation:none}
+  .stumped-badge,.row.active .dot,.hologram-scanline{animation:none}
+  .duel{contain:layout style}
+  .labs::after{display:none}
+  /* Below-the-fold sections skip layout and paint until the user gets near them */
+  #arena,#matrix,#vault,#share-studio,#simulator,#how,#index,#edge,#labs{content-visibility:auto;contain-intrinsic-size:auto 620px}
+}
+</style>
+</head>
+
+<body data-font-theme="benchmark" class="wallet-disconnected">
+<a href="#main-content" class="skip-link">Skip to main content</a>
+<div class="progress" id="progress"></div>
+
+<!-- NAVIGATION (Simplified Max 5 Top-Level Items on Desktop) -->
+<header class="nav" id="nav">
+  <nav class="nav-in" aria-label="Main Navigation">
+    <a class="logo" href="/" aria-label="OutThink AI home">
+      <img src="/assets/logo-default-benchmark-light.png" alt="OutThink AI Logo" class="logo-img" width="32" height="32" data-dynamic-logo>
+      <span>OutThink AI</span>
+    </a>
+    <div class="nav-links-desktop" aria-label="Main">
+      <!-- 1. Explore Dropdown -->
+      <div class="nav-dropdown" id="navDropdownExplore">
+        <button class="nav-dropdown-btn" id="navBtnExplore" aria-haspopup="menu" aria-expanded="false" aria-controls="navMenuExplore">
+          <span>Explore</span>
+          <svg class="chevron" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
+        </button>
+        <div class="nav-dropdown-menu" id="navMenuExplore" role="menu" aria-labelledby="navBtnExplore">
+          <a href="/#arena" class="nav-dropdown-item" role="menuitem">
+            <span class="nav-item-icon"><outthink-icon name="live_duel_arena" size="20"></outthink-icon></span>
+            <div class="nav-item-text"><strong>Live Duel Arena</strong><span>Test ground truth vs frontier AI</span></div>
+          </a>
+          <a href="/#matrix" class="nav-dropdown-item" role="menuitem">
+            <span class="nav-item-icon"><outthink-icon name="cognitive_matrix" size="20"></outthink-icon></span>
+            <div class="nav-item-text"><strong>Cognitive Matrix</strong><span>Vector failure radar</span></div>
+          </a>
+          <a href="/#vault" class="nav-dropdown-item" role="menuitem">
+            <span class="nav-item-icon"><outthink-icon name="case_vault" size="20"></outthink-icon></span>
+            <div class="nav-item-text"><strong>Case Vault</strong><span>Zero-knowledge declassification</span></div>
+          </a>
+          <a href="/#index" class="nav-dropdown-item" role="menuitem">
+            <span class="nav-item-icon"><outthink-icon name="human_edge_index" size="20"></outthink-icon></span>
+            <div class="nav-item-text"><strong>Human Edge Index</strong><span>Live profession failure rates</span></div>
+          </a>
+          <a href="/share-studio" class="nav-dropdown-item" role="menuitem">
+            <span class="nav-item-icon"><outthink-icon name="viral_cards_studio" size="20"></outthink-icon></span>
+            <div class="nav-item-text"><strong>Viral Cards Studio</strong><span>3D badge generator</span></div>
+          </a>
+          <a href="/#edge" class="nav-dropdown-item" role="menuitem">
+            <span class="nav-item-icon"><outthink-icon name="edge_tokenomics" size="20"></outthink-icon></span>
+            <div class="nav-item-text"><strong>$OUTTHINK Tokenomics</strong><span>Mining emissions & pools</span></div>
+          </a>
+        </div>
+      </div>
+
+      <!-- 2. Community Dropdown -->
+      <div class="nav-dropdown" id="navDropdownCommunity">
+        <button class="nav-dropdown-btn" id="navBtnCommunity" aria-haspopup="menu" aria-expanded="false" aria-controls="navMenuCommunity">
+          <span>Community</span>
+          <svg class="chevron" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
+        </button>
+        <div class="nav-dropdown-menu" id="navMenuCommunity" role="menu" aria-labelledby="navBtnCommunity">
+          <a href="/review-queue" class="nav-dropdown-item" role="menuitem" data-wallet-gate="connected">
+            <span class="nav-item-icon"><outthink-icon name="review_queue" size="20"></outthink-icon></span>
+            <div class="nav-item-text"><strong>Review Queue</strong><span>Peer consensus verification</span></div>
+          </a>
+          <a href="/leaderboard" class="nav-dropdown-item" role="menuitem">
+            <span class="nav-item-icon"><outthink-icon name="leaderboard" size="20"></outthink-icon></span>
+            <div class="nav-item-text"><strong>Leaderboard</strong><span>Top expert rankings</span></div>
+          </a>
+          <a href="/monthly-report" class="nav-dropdown-item" role="menuitem">
+            <span class="nav-item-icon"><outthink-icon name="monthly_report" size="20"></outthink-icon></span>
+            <div class="nav-item-text"><strong>Monthly Report</strong><span>Benchmark intelligence PR</span></div>
+          </a>
+          <a href="/bounty-sprints" class="nav-dropdown-item" role="menuitem">
+            <span class="nav-item-icon"><outthink-icon name="bounty_sprints" size="20"></outthink-icon></span>
+            <div class="nav-item-text"><strong>Bounty Sprints</strong><span>Sponsored domain challenges</span></div>
+          </a>
+          <a href="/onboarding" class="nav-dropdown-item" role="menuitem" data-wallet-gate="connected">
+            <span class="nav-item-icon"><outthink-icon name="profile" size="20"></outthink-icon></span>
+            <div class="nav-item-text"><strong>Onboard / Verify</strong><span>Expert tier verification</span></div>
+          </a>
+        </div>
+      </div>
+
+      <!-- 3. AI Labs -->
+      <a href="/ai-labs" class="nav-link-item">AI Labs</a>
+    </div>
+
+    <!-- Top Action Controls: Theme Mode Toggle, Sound FX, Social X, Web3 Wallet / Main CTA, Primary CTA & Mobile Hamburger -->
+    <div style="display:flex;gap:10px;align-items:center">
+      <!-- 4. Theme Mode Toggle (Light / Dark / System) -->
+      <button class="theme-mode-btn" id="themeModeToggleBtn" title="Theme: System (click to cycle)" aria-label="Toggle color theme">
+        <outthink-icon name="system_theme" size="16"></outthink-icon>
+      </button>
+
+      <!-- Synthesized Sound Toggle -->
+      <button class="sound-toggle-btn sound-on" id="soundToggleBtn" title="Toggle audio haptics" aria-label="Toggle audio haptics"></button>
+
+      <!-- Small X (Twitter) Icon Button -->
+      <a href="https://x.com/outthinkai" target="_blank" rel="noopener noreferrer" class="social-x-btn" title="Follow OutThink AI on X" aria-label="Follow OutThink AI on X" role="button">
+        <outthink-icon name="x" size="16"></outthink-icon>
+      </a>
+
+      <!-- Web3 Connect Wallet / Main CTA when disconnected -->
+      <button class="wallet-btn main-cta" id="connectWalletBtn" title="Connect Web3 Wallet" aria-label="Connect Web3 Wallet">
+        <outthink-icon name="coin" size="16"></outthink-icon>
+        <span id="walletBtnText">Connect Wallet</span>
+      </button>
+
+      <!-- 5. Submit case Primary CTA (visible only when connected) -->
+      <a href="/submit" class="btn btn-primary nav-cta-btn" id="navSubmitCaseBtn" data-wallet-gate="connected" style="min-height:42px;font-size:14px;padding:0 20px">Submit case</a>
+
+      <!-- Mobile Hamburger Button (<1024px) -->
+      <button class="mobile-menu-btn" id="mobileMenuBtn" title="Open Menu" aria-label="Open navigation menu">
+        <outthink-icon name="menu" size="22"></outthink-icon>
+      </button>
+    </div>
+  </nav>
+</header>
+
+<!-- Mobile Navigation Drawer & Backdrop -->
+<div class="mobile-drawer-backdrop" id="drawerBackdrop"></div>
+<aside class="mobile-drawer" id="mobileDrawer" aria-label="Mobile Navigation">
+  <div class="mobile-drawer-header">
+    <a class="logo" href="/" aria-label="OutThink AI home">
+      <img src="/assets/logo-default-benchmark-light.png" alt="OutThink AI Logo" class="logo-img" width="28" height="28" fetchpriority="low" data-dynamic-logo>
+      <span>OutThink AI</span>
+    </a>
+    <button class="mobile-drawer-close" id="mobileDrawerClose" aria-label="Close navigation menu">
+      <outthink-icon name="close" size="20"></outthink-icon>
+    </button>
+  </div>
+  <div class="mobile-drawer-body">
+    <div class="drawer-section drawer-accordion open" id="drawerAccordionExploreWrap">
+      <button class="drawer-accordion-btn" id="drawerBtnExplore" aria-expanded="true" aria-controls="drawerContentExplore">
+        <span>Explore</span>
+        <svg class="chevron" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
+      </button>
+      <div class="drawer-accordion-content" id="drawerContentExplore">
+        <a href="/#arena" class="drawer-link"><span class="drawer-item-icon"><outthink-icon name="live_duel_arena" size="18"></outthink-icon></span> <span>Live Duel Arena</span></a>
+        <a href="/#matrix" class="drawer-link"><span class="drawer-item-icon"><outthink-icon name="cognitive_matrix" size="18"></outthink-icon></span> <span>Cognitive Matrix</span></a>
+        <a href="/#vault" class="drawer-link"><span class="drawer-item-icon"><outthink-icon name="case_vault" size="18"></outthink-icon></span> <span>Case Vault</span></a>
+        <a href="/#index" class="drawer-link"><span class="drawer-item-icon"><outthink-icon name="human_edge_index" size="18"></outthink-icon></span> <span>Human Edge Index</span></a>
+        <a href="/share-studio" class="drawer-link"><span class="drawer-item-icon"><outthink-icon name="viral_cards_studio" size="18"></outthink-icon></span> <span>Viral Cards Studio</span></a>
+        <a href="/#edge" class="drawer-link"><span class="drawer-item-icon"><outthink-icon name="edge_tokenomics" size="18"></outthink-icon></span> <span>$OUTTHINK Tokenomics</span></a>
+      </div>
+    </div>
+    <div class="drawer-section drawer-accordion" id="drawerAccordionCommunityWrap">
+      <button class="drawer-accordion-btn" id="drawerBtnCommunity" aria-expanded="false" aria-controls="drawerContentCommunity">
+        <span>Community</span>
+        <svg class="chevron" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
+      </button>
+      <div class="drawer-accordion-content" id="drawerContentCommunity">
+        <a href="/review-queue" class="drawer-link" data-wallet-gate="connected"><span class="drawer-item-icon"><outthink-icon name="review_queue" size="18"></outthink-icon></span> <span>Review Queue</span></a>
+        <a href="/leaderboard" class="drawer-link"><span class="drawer-item-icon"><outthink-icon name="leaderboard" size="18"></outthink-icon></span> <span>Leaderboard</span></a>
+        <a href="/monthly-report" class="drawer-link"><span class="drawer-item-icon"><outthink-icon name="monthly_report" size="18"></outthink-icon></span> <span>Monthly Report</span></a>
+        <a href="/bounty-sprints" class="drawer-link"><span class="drawer-item-icon"><outthink-icon name="bounty_sprints" size="18"></outthink-icon></span> <span>Bounty Sprints</span></a>
+        <a href="/onboarding" class="drawer-link" data-wallet-gate="connected"><span class="drawer-item-icon"><outthink-icon name="profile" size="18"></outthink-icon></span> <span>Onboard / Verify</span></a>
+      </div>
+    </div>
+    <div class="drawer-section">
+      <div class="drawer-heading">Platform</div>
+      <a href="/ai-labs" class="drawer-link"><span class="drawer-item-icon"><outthink-icon name="ai_labs" size="18"></outthink-icon></span> <span>AI Labs</span></a>
+    </div>
+    <div class="drawer-section">
+      <div class="drawer-heading">Theme Mode</div>
+      <div class="drawer-theme-mode-group">
+        <button class="drawer-theme-mode-btn" data-mode="light" title="Light theme" aria-label="Light theme">
+          <outthink-icon name="sun" size="16"></outthink-icon>
+          <span>Light</span>
+        </button>
+        <button class="drawer-theme-mode-btn active" data-mode="system" title="System theme" aria-label="System theme">
+          <outthink-icon name="system_theme" size="16"></outthink-icon>
+          <span>System</span>
+        </button>
+        <button class="drawer-theme-mode-btn" data-mode="dark" title="Dark theme" aria-label="Dark theme">
+          <outthink-icon name="moon" size="16"></outthink-icon>
+          <span>Dark</span>
+        </button>
+      </div>
+    </div>
+    <div class="drawer-section" id="drawerCtaSection" data-wallet-gate="connected">
+      <a href="/submit" class="btn btn-human" style="width:100%;min-height:44px;font-size:15px">Submit Case</a>
+    </div>
+    <div class="drawer-section" id="drawerConnectSection" data-wallet-gate="disconnected">
+      <button class="btn btn-primary" id="drawerConnectWalletBtn" style="width:100%;min-height:44px;font-size:15px;display:none;align-items:center;justify-content:center;gap:8px">
+        <outthink-icon name="coin" size="18"></outthink-icon>
+        <span>Connect Wallet</span>
+      </button>
+    </div>
+    <div class="drawer-section" id="drawerThemePicker">
+      <div class="drawer-heading">Domain Typography</div>
+      <div class="drawer-theme-list">
+        <button class="theme-opt active" data-font-opt="benchmark">
+          <outthink-icon name="benchmark" size="16"></outthink-icon>
+          <div><strong>Benchmark</strong> (Default)</div>
+        </button>
+        <button class="theme-opt" data-font-opt="clinical">
+          <outthink-icon name="medicine" size="16"></outthink-icon>
+          <div><strong>Clinical</strong> (Medicine)</div>
+        </button>
+        <button class="theme-opt" data-font-opt="legal">
+          <outthink-icon name="law" size="16"></outthink-icon>
+          <div><strong>Jurisprudence</strong> (Law)</div>
+        </button>
+        <button class="theme-opt" data-font-opt="systems">
+          <outthink-icon name="software" size="16"></outthink-icon>
+          <div><strong>Systems</strong> (Engineering)</div>
+        </button>
+        <button class="theme-opt" data-font-opt="financial">
+          <outthink-icon name="tax" size="16"></outthink-icon>
+          <div><strong>Financial</strong> (Tax)</div>
+        </button>
+        <button class="theme-opt" data-font-opt="diagnostics">
+          <outthink-icon name="diagnostics" size="16"></outthink-icon>
+          <div><strong>Diagnostics</strong> (Trades)</div>
+        </button>
+      </div>
+    </div>
+  </div>
+</aside>
+
+<main id="main-content">
+<div class="page-view active" id="view-home" style="display:block">
+<!-- HERO -->
+<section class="hero" id="hero">
+  <div class="cube3d" aria-hidden="true"><div class="c"><i class="f f1"></i><i class="f f2"></i><i class="f f3"></i><i class="f f4"></i><i class="f f5"></i><i class="f f6"></i></div></div>
+  <canvas id="scene" aria-hidden="true"></canvas>
+  <canvas id="glass" aria-hidden="true"></canvas>
+  <h1 style="position:absolute;left:-9999px">OutThink AI: mined only by experts AI can't replace</h1>
+  <div class="ui">
+    <div class="hero-arrows">
+      <button class="prev" type="button" aria-label="Previous slide"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M10 6H2M5.5 2.5 2 6l3.5 3.5"/></svg></button>
+      <button class="next" type="button" aria-label="Next slide"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M2 6h8M6.5 2.5 10 6l-3.5 3.5"/></svg></button>
+    </div>
+    <div class="hero-dots" role="tablist" aria-label="Hero slides">
+      <button class="on" type="button" role="tab" aria-selected="true" aria-label="Slide 1"></button>
+      <button type="button" role="tab" aria-selected="false" aria-label="Slide 2"></button>
+      <button type="button" role="tab" aria-selected="false" aria-label="Slide 3"></button>
+    </div>
+    <div class="hero-copy">
+      <h2>OutThink AI:<b>mined only by</b><b>experts AI can't replace.</b></h2>
+      <div class="hero-ca">
+        <small>Token</small>
+        <code><a href="https://robinhoodchain.blockscout.com/address/0x4bd75efdbe954e0185e85eac28b126ce33945f11" target="_blank" rel="noopener noreferrer">$OUTTHINK &middot; 0x4bd75efdbe954e0185e85eac28b126ce33945f11</a></code>
+        <button type="button" data-copy="0x4bd75efdbe954e0185e85eac28b126ce33945f11" aria-label="Copy contract address" title="Copy contract address"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><rect x="8" y="8" width="12" height="12" rx="2"/><path d="M16 8V6a2 2 0 0 0-2-2H6a2 2 0 0 0-2 2v8a2 2 0 0 0 2 2h2"/></svg>Copy</button>
+        <a href="#edge">Tokenomics <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M14 4h6v6M20 4l-9 9M18 14v5a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V7a1 1 0 0 1 1-1h5"/></svg></a>
+      </div>
+    </div>
+    <div class="hero-cta"><a class="btn" href="#how">See how it works</a></div>
+    <div class="hero-loading"></div>
+    <div class="hero-num"><b>01</b></div>
+  </div>
+</section>
+
+<!-- LIVE DUEL PREVIEW -->
+<section class="sec-pad" id="live-duel">
+  <div class="wrap">
+    <div class="fade-in" style="animation-delay:.15s">
+      <div class="duel" id="duel" data-tilt style="min-height:520px">
+        <div class="float-badge">Peer review: 3 cardiologists</div>
+        <div class="duel-top">
+          <div style="display:flex;align-items:center;gap:10px;font-weight:600">
+            <outthink-icon name="lock" size="18"></outthink-icon>
+            Case 0x7c3f…e91a
+          </div>
+          <span class="tag tag-m">Cardiology</span>
+        </div>
+        <div class="locked" role="group" aria-label="Case content is hidden">
+          <div class="bl" style="width:92%"></div><div class="bl" style="width:76%"></div><div class="bl" style="width:63%"></div>
+        </div>
+        <p style="margin-top:10px;font-size:14px;color:var(--ink-3)">The model panel sees the full case. The public only ever sees its hash.</p>
+        <div class="rows" id="rows">
+          <div class="row" data-v="wrong"><span class="name"><span class="dot"></span>Claude 3.7</span><div class="bar"><i></i></div><span class="verdict v-wrong"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" style="display:inline;vertical-align:-1px;margin-right:3px"><path d="M18 6L6 18M6 6l12 12"/></svg>Wrong</span></div>
+          <div class="row" data-v="wrong"><span class="name"><span class="dot"></span>OpenAI o1</span><div class="bar"><i></i></div><span class="verdict v-wrong"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" style="display:inline;vertical-align:-1px;margin-right:3px"><path d="M18 6L6 18M6 6l12 12"/></svg>Wrong</span></div>
+          <div class="row" data-v="right"><span class="name"><span class="dot"></span>Gemini 2.0</span><div class="bar"><i></i></div><span class="verdict v-right"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" style="display:inline;vertical-align:-1px;margin-right:3px"><path d="M20 6L9 17l-5-5"/></svg>Right</span></div>
+          <div class="row" data-v="wrong"><span class="name"><span class="dot"></span>DeepSeek-R1</span><div class="bar"><i></i></div><span class="verdict v-wrong"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" style="display:inline;vertical-align:-1px;margin-right:3px"><path d="M18 6L6 18M6 6l12 12"/></svg>Wrong</span></div>
+          <div class="row" data-v="wrong"><span class="name"><span class="dot"></span>Llama 3.3</span><div class="bar"><i></i></div><span class="verdict v-wrong"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" style="display:inline;vertical-align:-1px;margin-right:3px"><path d="M18 6L6 18M6 6l12 12"/></svg>Wrong</span></div>
+        </div>
+        <div class="stamp" id="stamp">
+          <outthink-icon name="alert" size="28"></outthink-icon>
+          <div><p style="font-weight:700">4 of 5 models got it wrong</p><p style="font-size:14px;color:var(--ink-2)">Sent to peer review</p></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TICKER -->
+<div class="ticker" aria-hidden="true">
+  <div class="ticker-track" id="ticker"></div>
+</div>
+
+<!-- ======================================================================
+     OUT-OF-THE-BOX FEATURE 1: LIVE COGNITIVE DUEL ARENA PLAYGROUND
+     ====================================================================== -->
+<section class="sec-pad" id="arena" style="background:var(--surface);border-bottom:1px solid var(--border)">
+  <div class="wrap">
+    <div style="display:flex;justify-content:space-between;align-items:flex-end;flex-wrap:wrap;gap:20px">
+      <div>
+        <span class="chip"><span class="live"></span>Interactive Arena Playground</span>
+        <h2 class="sec-title" style="margin-top:12px">Test Ground Truth <em class="serif">against Frontier AI.</em></h2>
+        <p class="lead">Select a verified benchmark case below and run the 5-model evaluation live to inspect how frontier models succumb to high-stakes edge traps.</p>
+      </div>
+      <div style="display:flex;gap:12px;flex-wrap:wrap">
+        <button class="btn btn-human" id="runDuelBtn" style="min-height:52px;font-size:16px;box-shadow:0 12px 30px var(--glow)">
+          <outthink-icon name="duel" size="18"></outthink-icon> Run Live Cognitive Duel
+        </button>
+        <button class="btn btn-ghost" id="simEdgeDecayBtn" style="min-height:52px;font-size:15px" title="Simulate how new frontier models resolve old traps over time">
+          <outthink-icon name="decay" size="18"></outthink-icon> Test Edge Decay (Frontier AI)
+        </button>
+      </div>
+    </div>
+
+    <!-- Case Selector Chips -->
+    <div class="case-selector-chips">
+      <button class="case-chip active"><outthink-icon name="medicine" size="16"></outthink-icon> Cardiology: Acute LMCA Occlusion</button>
+      <button class="case-chip"><outthink-icon name="law" size="16"></outthink-icon> Law: Delaware vs Singapore SaaS Indemnity</button>
+      <button class="case-chip"><outthink-icon name="software" size="16"></outthink-icon> Systems: Go sync.Pool Finalizer Leak</button>
+      <button class="case-chip"><outthink-icon name="mechanics" size="16"></outthink-icon> Mechanics: Ford EcoBoost VCT Starvation</button>
+      <button class="case-chip"><outthink-icon name="tax" size="16"></outthink-icon> Tax: IRS Notice 2023-55 Crypto Foreign Basket</button>
+    </div>
+
+    <div class="arena-playground">
+      <div class="live-duel-grid">
+        <!-- Active Case Inspector -->
+        <div class="active-case-card">
+          <div style="display:flex;justify-content:space-between;align-items:center">
+            <span class="badge-tag medicine" id="activeCaseBadge">MEDICINE • CARDIOLOGY</span>
+            <span style="font-family:var(--mono);font-size:12px;color:var(--machine)" id="activeCaseHash">Hash: 0x7c3f9a2e…e91a</span>
+          </div>
+          <h3 style="font-size:22px" id="activeCaseTitle">Acute LMCA Occlusion with Hyperacute Normal Troponin</h3>
+          <p style="font-size:15px;color:var(--ink-2);line-height:1.6" id="activeCasePrompt">
+            58-year-old male with 45m substernal heaviness. Initial hs-cTnI is 8 ng/L (normal &lt;14). ECG: diffuse ST depression leads I, II, aVF, V4-V6 with 1.2mm ST elevation in lead aVR. BP 98/62.
+          </p>
+          <div style="background:var(--surface-2);padding:14px;border-radius:12px;border:1px solid var(--border);font-size:14px">
+            <strong>Question:</strong> <span id="activeCaseQuestion">Culprit lesion &amp; immediate emergency protocol?</span>
+          </div>
+          <div>
+            <span style="font-size:12px;font-weight:700;color:var(--ink-3);text-transform:uppercase">Expert Grading Rubric (Mandatory Criteria):</span>
+            <div class="rubric-pill-list" id="activeRubricList"></div>
+          </div>
+        </div>
+
+        <!-- Live Streaming AI Panel Terminal -->
+        <div class="ai-stream-terminal">
+          <div class="ai-terminal-status-bar">
+            <span>5-MODEL COGNITIVE RUNNER</span>
+            <span>EVALUATION ORACLE · ROBINHOOD CHAIN</span>
+          </div>
+          <div class="ai-stream-models">
+            <div class="stream-model-item" id="streamClaude">
+              <div class="stream-model-header">
+                <strong>Claude 3.7 Sonnet</strong>
+                <span class="stream-verdict">Idle</span>
+              </div>
+              <div class="stream-confidence-bar"><i></i></div>
+            </div>
+            <div class="stream-model-item" id="streamOpenAI">
+              <div class="stream-model-header">
+                <strong>OpenAI o1</strong>
+                <span class="stream-verdict">Idle</span>
+              </div>
+              <div class="stream-confidence-bar"><i></i></div>
+            </div>
+            <div class="stream-model-item" id="streamGemini">
+              <div class="stream-model-header">
+                <strong>Gemini 2.0 Pro</strong>
+                <span class="stream-verdict">Idle</span>
+              </div>
+              <div class="stream-confidence-bar"><i></i></div>
+            </div>
+            <div class="stream-model-item" id="streamDeepSeek">
+              <div class="stream-model-header">
+                <strong>DeepSeek-R1</strong>
+                <span class="stream-verdict">Idle</span>
+              </div>
+              <div class="stream-confidence-bar"><i></i></div>
+            </div>
+            <div class="stream-model-item" id="streamLlama">
+              <div class="stream-model-header">
+                <strong>Llama 3.3 70B</strong>
+                <span class="stream-verdict">Idle</span>
+              </div>
+              <div class="stream-confidence-bar"><i></i></div>
+            </div>
+          </div>
+
+          <!-- Stamp Overlay -->
+          <div class="terminal-stamp-overlay" id="terminalStampOverlay">
+            <div class="stumped-badge">4 OF 5 MODELS STUMPED</div>
+            <p style="color:var(--text);font-size:15px;max-width:320px">Ground truth confirmed. Case qualifies for decentralized peer review.</p>
+            <span style="font-family:var(--mono);font-size:11px;color:var(--secondary)">Proof: Robinhood Chain · hash anchored per case</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ======================================================================
+     OUT-OF-THE-BOX FEATURE 2: COGNITIVE RADAR & SPIDER MATRIX
+     ====================================================================== -->
+<section class="sec-pad" id="matrix">
+  <div class="wrap radar-section-wrap">
+    <div class="reveal">
+      <span class="chip"><span class="live"></span>Cognitive Vector Matrix</span>
+      <h2 class="sec-title" style="margin-top:14px">Where Machines Fail. <em class="serif">Where Humans Excel.</em></h2>
+      <p class="lead">Frontier LLMs excel at textbook recall, but collapse when cross-domain subtleties, temporal latency, or regulatory statutory nuances interact.</p>
+      
+      <div class="radar-vector-list" style="margin-top:28px">
+        <div class="radar-vector-row">
+          <div style="display:flex;align-items:center;gap:8px"><outthink-icon name="medicine" size="18"></outthink-icon> <strong>Medicine:</strong> Acute Hyperacute Ischemia</div>
+          <span style="font-family:var(--mono);color:var(--primary);font-weight:700">80% AI Fail</span>
+        </div>
+        <div class="radar-vector-row">
+          <div style="display:flex;align-items:center;gap:8px"><outthink-icon name="law" size="18"></outthink-icon> <strong>Law:</strong> Lex Contractus vs Forum Standard</div>
+          <span style="font-family:var(--mono);color:var(--primary);font-weight:700">80% AI Fail</span>
+        </div>
+        <div class="radar-vector-row">
+          <div style="display:flex;align-items:center;gap:8px"><outthink-icon name="software" size="18"></outthink-icon> <strong>Software:</strong> GC Resurrections &amp; Finalizer Pinning</div>
+          <span style="font-family:var(--mono);color:var(--primary);font-weight:700">60% AI Fail</span>
+        </div>
+        <div class="radar-vector-row">
+          <div style="display:flex;align-items:center;gap:8px"><outthink-icon name="mechanics" size="18"></outthink-icon> <strong>Diagnostics:</strong> Hot Oil Viscosity Screen Pressure</div>
+          <span style="font-family:var(--mono);color:var(--primary);font-weight:700">60% AI Fail</span>
+        </div>
+        <div class="radar-vector-row">
+          <div style="display:flex;align-items:center;gap:8px"><outthink-icon name="tax" size="18"></outthink-icon> <strong>Tax:</strong> §904(c) Timing Cushion &amp; Basket Rules</div>
+          <span style="font-family:var(--mono);color:var(--primary);font-weight:700">60% AI Fail</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Interactive Canvas Spider Chart -->
+    <div class="radar-canvas-card reveal">
+      <div style="display:flex;justify-content:space-between;width:100%;margin-bottom:14px">
+        <span style="font-size:13px;font-weight:700;color:var(--ink-3)">COGNITIVE CAPABILITY RADAR</span>
+        <div style="display:flex;gap:12px;font-size:12px">
+          <span style="color:var(--primary);font-weight:600">■ Human (96%)</span>
+          <span style="color:var(--machine);font-weight:600">■ AI (28%)</span>
+        </div>
+      </div>
+      <div class="radar-canvas-container">
+        <canvas id="cognitiveRadarCanvas" style="width:100%;height:100%;max-width:100%;display:block"></canvas>
+        <div class="radar-tooltip" id="radarTooltip"></div>
+      </div>
+      <p style="font-size:13px;color:var(--ink-3);margin-top:14px;text-align:center">Hover over any axis vertex to inspect the specific failure vector.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ======================================================================
+     OUT-OF-THE-BOX FEATURE 3: CASE DECLASSIFICATION LENS
+     ====================================================================== -->
+<section class="sec-pad" id="vault" style="background:var(--surface);border-top:1px solid var(--border);border-bottom:1px solid var(--border)">
+  <div class="wrap">
+    <div class="reveal" style="text-align:center;max-width:720px;margin:0 auto">
+      <span class="chip">Zero-Knowledge Authorship</span>
+      <h2 class="sec-title" style="margin:14px auto 0">The Declassification Lens</h2>
+      <p class="lead" style="margin:16px auto 0">Simulate how OutThink AI preserves total privacy while enabling rigorous benchmark evaluation. Drag the slider to adjust declassification transparency.</p>
+    </div>
+
+    <div class="vault-panel reveal">
+      <div class="declass-slider-bar">
+        <span style="font-size:14px;font-weight:600;color:var(--ink);display:inline-flex;align-items:center;gap:6px"><outthink-icon name="lock" size="16"></outthink-icon> Private Vault</span>
+        <input type="range" class="declass-slider" id="declassSlider" min="0" max="100" value="30" aria-label="De-classification public rubric percentage">
+        <span style="font-size:14px;font-weight:600;color:var(--primary)" id="declassValueLabel">30% Public Rubric</span>
+      </div>
+
+      <div class="hologram-case-preview">
+        <div class="hologram-scanline"></div>
+        <div style="display:flex;justify-content:space-between;border-bottom:1px solid var(--border);padding-bottom:12px;margin-bottom:16px">
+          <span style="color:var(--primary)">CASE: 0x7c3f9a2e…b41d0e91a</span>
+          <span>ROBINHOOD CHAIN</span>
+        </div>
+        <p style="line-height:1.7">
+          Patient record: <span class="rune-cipher">[REDACTED_PATIENT_NAME]</span> admitted with <span class="rune-cipher">45 min substernal pain</span>.
+          Initial troponin was <span class="rune-cipher">hs-cTnI 8 ng/L</span>.
+          Lead aVR exhibits <span style="color:var(--text);font-weight:bold">1.2mm ST elevation</span> with diffuse depressions.
+        </p>
+        <div style="margin-top:16px;padding:12px;border-radius:10px;background:var(--surface-2);border:1px solid var(--border)">
+          <strong style="color:var(--secondary)">Ground Truth Diagnosis:</strong> 
+          <span class="rune-cipher">Left Main Coronary Artery Subtotal Stenosis</span>
+        </div>
+        <div style="margin-top:20px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:14px">
+          <button class="btn btn-ghost" id="verifyVaultHashBtn" style="min-height:38px;font-size:13px">
+            <outthink-icon name="search" size="14"></outthink-icon> Verify On-Chain Hash Integrity
+          </button>
+          <div id="vaultHashVerifyResult" style="display:none;font-size:13px"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ======================================================================
+     OUT-OF-THE-BOX FEATURE 4: 3D VIRAL SHARE CARD STUDIO
+     ====================================================================== -->
+<section class="sec-pad" id="share-studio">
+  <div class="wrap">
+    <div class="share-studio-layout">
+      <div class="reveal">
+        <span class="chip"><span class="live"></span>Viral Share Studio</span>
+        <h2 class="sec-title" style="margin-top:14px">Prove what you beat. <em class="serif">Export your card.</em></h2>
+        <p class="lead">Generate a tamper-evident, high-resolution visual badge to share your AI defeat on LinkedIn and X without exposing proprietary trade secrets.</p>
+        
+        <div style="margin-top:28px;display:grid;grid-template-columns:1fr 1fr;gap:16px">
+          <div class="form-group">
+            <label>Badge Title</label>
+            <input type="text" class="form-control" id="shareCardRoleInput" value="Top 1% Human Edge, Cardiology" aria-label="Badge title text">
+          </div>
+          <div class="form-group">
+            <label>Models Beaten</label>
+            <input type="text" class="form-control" id="shareCardModelsInput" value="4 of 5" aria-label="Models beaten text">
+          </div>
+        </div>
+
+        <div style="display:flex;gap:14px;flex-wrap:wrap;margin-top:10px">
+          <button class="btn btn-human" id="downloadShareCardBtn">Download Card (PNG)</button>
+          <button class="btn btn-ghost" onclick="navigator.clipboard?.writeText(window.location.href); showToast('Share link copied to clipboard!', 'success');">Copy Link</button>
+        </div>
+      </div>
+
+      <!-- 3D Perspective Card with Specular Glare -->
+      <div class="share-card-canvas-wrap reveal">
+        <div class="share-card-3d" id="shareCard3D">
+          <svg class="share-card-watermark-symbol" viewBox="0 0 34 34" fill="none"><rect width="34" height="34" rx="9" fill="#FFF"/><path d="M8 17h8" stroke="#0E1A3A" stroke-width="2.2"/><path d="M18 17l8-6M18 17l8 6" stroke="#0E1A3A" stroke-width="2.2"/></svg>
+          <span class="share-card-badge" id="sharePreviewBadge">Top 1% Human Edge, Cardiology</span>
+          <h3 class="share-card-title" style="font-size:32px;margin:24px 0 10px" id="sharePreviewSub">My case beat 4 of 5 AI models</h3>
+          <p class="share-card-desc">Verified on OutThink AI • Private Evaluation Benchmark</p>
+          <div class="share-card-proof">Proof: content hash anchored per case • Robinhood Chain</div>
+        </div>
+        <canvas id="shareExportCanvas" style="display:none"></canvas>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ======================================================================
+     OUT-OF-THE-BOX FEATURE 5: INTERACTIVE TOKENOMICS SIMULATOR
+     ====================================================================== -->
+<section class="sec-pad" id="simulator" style="background:var(--surface);border-top:1px solid var(--border);border-bottom:1px solid var(--border)">
+  <div class="wrap">
+    <div class="reveal">
+      <span class="chip">Dynamic Emission Simulator</span>
+      <h2 class="sec-title" style="margin-top:14px">Failure-Rate Weighted <em class="serif">Epoch Pools.</em></h2>
+      <p class="lead">Tweak the simulated AI failure rate per profession below to watch the weekly emission pools rebalance dynamically in real time.</p>
+    </div>
+
+    <div class="panel reveal" style="margin-top:36px">
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:24px">
+        <div>
+          <label style="font-size:14px;font-weight:600">Medicine AI Fail Rate</label>
+          <input type="range" class="form-control" id="simMedSlider" min="20" max="95" value="80" style="padding:0;margin-top:8px" aria-label="Medicine AI fail rate slider">
+        </div>
+        <div>
+          <label style="font-size:14px;font-weight:600">Law AI Fail Rate</label>
+          <input type="range" class="form-control" id="simLawSlider" min="20" max="95" value="80" style="padding:0;margin-top:8px" aria-label="Law AI fail rate slider">
+        </div>
+        <div>
+          <label style="font-size:14px;font-weight:600">Software AI Fail Rate</label>
+          <input type="range" class="form-control" id="simSweSlider" min="20" max="95" value="60" style="padding:0;margin-top:8px" aria-label="Software AI fail rate slider">
+        </div>
+      </div>
+
+      <div style="margin-top:28px">
+        <p style="font-size:13px;font-weight:700;color:var(--ink-3);margin-bottom:8px">SIMULATED WEEKLY $OUTTHINK REWARD POOL PARTITION</p>
+        <div style="display:flex;height:24px;border-radius:12px;overflow:hidden;background:var(--surface-2);gap:4px">
+          <div id="simMedBar" style="width:36%;background:var(--primary);transition:width 0.4s ease" title="Medicine Pool"></div>
+          <div id="simLawBar" style="width:36%;background:var(--secondary);transition:width 0.4s ease" title="Law Pool"></div>
+          <div id="simSweBar" style="width:28%;background:var(--alert);transition:width 0.4s ease" title="Software Pool"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PINNED CHAPTERS -->
+<section class="pin" id="how">
+  <div class="pin-stage">
+    <div class="wrap pin-grid">
+      <div>
+        <h2 class="sec-title" style="font-size:clamp(30px,3.6vw,48px)">From your hardest case <em class="serif">to a verified win.</em></h2>
+        <div class="chapters" role="tablist" aria-label="Steps">
+          <button class="on" role="tab" aria-selected="true" data-ch="0">Submit</button>
+          <button role="tab" aria-selected="false" data-ch="1">AI panel</button>
+          <button role="tab" aria-selected="false" data-ch="2">Peer review</button>
+          <button role="tab" aria-selected="false" data-ch="3">Reward</button>
+        </div>
+        <div class="rail" id="rail"><i></i></div>
+        <div class="ch-text">
+          <div class="ch on"><span class="num">Step 1</span><h3>Submit a real case</h3><p>A scenario from your work, the question, the right answer, a short explanation and a grading rubric. Text, images and attachments all work.</p></div>
+          <div class="ch"><span class="num">Step 2</span><h3>The AI panel answers</h3><p>Your case runs against the latest models. Every answer is graded against your rubric by an AI judge, with human spot checks on a sample.</p></div>
+          <div class="ch"><span class="num">Step 3</span><h3>Peers check it</h3><p>When most models fail, two or three experts in your field confirm the answer is right, the case is fair and nothing is ambiguous.</p></div>
+          <div class="ch"><span class="num">Step 4</span><h3>You earn and climb</h3><p>Accepted cases earn points and rewards, and push your profession up the weekly leaderboard.</p></div>
+        </div>
+      </div>
+      <div class="stack" id="stack">
+        <div class="card3d">
+          <div class="hud"><span>New case</span><span>Draft</span></div>
+          <h4>Chest pain, normal troponin</h4>
+          <div style="display:flex;flex-direction:column;gap:8px"><div class="bl" style="width:90%;filter:none;background:var(--surface-2)"></div><div class="bl" style="width:70%;filter:none;background:var(--surface-2)"></div></div>
+          <div class="mini-rows">
+            <div class="mini"><outthink-icon name="check" size="16"></outthink-icon>Answer and explanation</div>
+            <div class="mini"><outthink-icon name="check" size="16"></outthink-icon>Grading rubric, 4 criteria</div>
+            <div class="mini"><outthink-icon name="check" size="16"></outthink-icon>PII check passed</div>
+          </div>
+        </div>
+        <div class="card3d">
+          <div class="hud"><span>Model panel</span><span>Graded vs rubric</span></div>
+          <h4>5 models tested</h4>
+          <div class="mini-rows">
+            <div class="mini">A<span class="b"><i style="width:22%;background:var(--primary)"></i></span>1/4</div>
+            <div class="mini">B<span class="b"><i style="width:40%;background:var(--primary)"></i></span>2/4</div>
+            <div class="mini">C<span class="b"><i style="width:100%"></i></span>4/4</div>
+            <div class="mini">D<span class="b"><i style="width:22%;background:var(--primary)"></i></span>1/4</div>
+            <div class="mini">E<span class="b"><i style="width:40%;background:var(--primary)"></i></span>2/4</div>
+          </div>
+        </div>
+        <div class="card3d">
+          <div class="hud"><span>Peer review</span><span>Consensus</span></div>
+          <h4>Valid, fair, unambiguous</h4>
+          <p style="color:var(--ink-2);font-size:15px">Reviewers vote valid, invalid or ambiguous. Ambiguous cases go back to the author.</p>
+          <div class="reviewers"><span class="av ok">R1</span><span class="av ok">R2</span><span class="av ok">R3</span></div>
+        </div>
+        <div class="card3d" style="background:var(--surface-2);color:var(--text);border-color:var(--border)">
+          <div class="hud" style="color:var(--text-muted)"><span>Accepted</span><span>Hash recorded</span></div>
+          <h4 style="color:var(--text)">AI Slayer, Cardiology</h4>
+          <p style="color:var(--text-muted);font-size:15px">Reward paid. Your case joins the private dataset and counts toward your profession's weekly rank.</p>
+          <div style="margin-top:auto;display:flex;justify-content:space-between;align-items:center"><span style="font-family:var(--display);font-size:28px;color:var(--primary)">+ 5,000 $OUTTHINK</span><span style="font-family:var(--mono);font-size:12px;color:var(--text-muted)">0x7c3f…e91a</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- INDEX -->
+<section class="sec-pad" id="index">
+  <div class="wrap">
+    <h2 class="sec-title reveal">Human Edge Index</h2>
+    <p class="lead reveal">Which professions does AI still struggle with most? Every week, professions are ranked by how often their verified cases beat the model panel.</p>
+    <div class="index-grid">
+      <div class="reveal">
+        <p class="muted" style="max-width:30em">Share what you beat, not what you wrote. Share cards show the result and your field, never the case itself.</p>
+        <a class="share" href="/share-studio" style="text-decoration:none">
+          <div class="ico"><outthink-icon name="leaderboard" size="28"></outthink-icon></div>
+          <div><p style="font-weight:600">Top 1% Human Edge, Cardiology</p><p style="font-size:14px;color:var(--text-muted)">My case beat 4 of 5 AI models (Click to customize)</p></div>
+        </a>
+      </div>
+      <div class="panel reveal" id="ixPanel">
+        <div style="display:flex;justify-content:space-between;align-items:baseline;gap:12px;flex-wrap:wrap;margin-bottom:22px">
+          <h3 style="font-size:18px">AI failure rate by profession</h3>
+          <span style="font-size:13px;color:var(--ink-3)">Live arena metrics</span>
+        </div>
+        <div class="ix" id="ixRowsContainer">
+          <div class="ix-row"><span class="ix-rank">1</span><span>Medicine</span><span class="ix-val" data-count="80">80%</span><div class="ix-bar"><i style="width:80%"></i></div></div>
+          <div class="ix-row"><span class="ix-rank">2</span><span>Law</span><span class="ix-val" data-count="80">80%</span><div class="ix-bar"><i style="width:80%;transition-delay:.1s"></i></div></div>
+          <div class="ix-row"><span class="ix-rank">3</span><span>Software engineering</span><span class="ix-val" data-count="60">60%</span><div class="ix-bar"><i style="width:60%;transition-delay:.2s"></i></div></div>
+          <div class="ix-row"><span class="ix-rank">4</span><span>Trades and mechanics</span><span class="ix-val" data-count="60">60%</span><div class="ix-bar"><i style="width:60%;transition-delay:.3s"></i></div></div>
+          <div class="ix-row"><span class="ix-rank">5</span><span>Accounting and tax</span><span class="ix-val" data-count="60">60%</span><div class="ix-bar"><i style="width:60%;transition-delay:.4s"></i></div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- HORIZONTAL TOKEN FLOW -->
+<section class="hpin" id="edge">
+  <div class="hstage">
+    <div class="wrap" style="width:100%">
+      <h2 class="sec-title" style="color:var(--text)">$OUTTHINK. <em class="serif">Mined only by experts AI can't replace.</em></h2>
+    </div>
+    <div class="htrack" id="htrack">
+      <div class="hcard"><span class="n">1</span><h3>Weekly epochs</h3><p>Each week's emission is split into profession pools.</p></div>
+      <div class="hcard"><span class="n">2</span><h3>Pools weighted by AI failure</h3><p>If AI fails 80% of cardiology cases and 40% of accounting cases, the cardiology pool is bigger. The hardest fields to replace earn the most.</p></div>
+      <div class="hcard"><span class="n">3</span><h3>Split inside the pool</h3><p>Rewards go to accepted cases, multiplied by models beaten and the expert's verification tier.</p></div>
+      <div class="hcard"><span class="n">4</span><h3>Edge decay</h3><p>When a newer model cracks an old case, it drops off the leaderboard. Rewards already earned stay yours.</p></div>
+      <div class="hcard big"><span class="n" style="color:var(--accent-contrast, #fff)">5</span><h3>Revenue-backed demand</h3><p>Dataset buyers pay in stablecoins. Part funds $OUTTHINK buyback and burn, part goes to the experts whose cases were licensed. Sponsors buy $OUTTHINK to fund sprint bounties.</p></div>
+    </div>
+    <div class="hrail" id="hrail"><i></i></div>
+  </div>
+</section>
+
+<!-- ALLOCATIONS -->
+<section class="sec-pad">
+  <div class="wrap">
+    <div class="reveal" id="allocWrap">
+      <div style="display:flex;justify-content:space-between;align-items:flex-end;gap:20px;flex-wrap:wrap">
+        <div><h3 style="font-family:var(--display);font-size:clamp(24px,3.2vw,40px);font-weight:700;margin:0">Emission allocation</h3><p class="muted" style="margin-top:8px;max-width:34em">Share of emissions, in percent. No token supply figure is published before the token is deployed.</p></div>
+        <p class="muted" style="max-width:24em">Fair launch on Robinhood Chain, no exempt wallets, public team vesting.</p>
+      </div>
+      <div class="alloc">
+        <span style="width:50%;background:var(--primary)"></span>
+        <span style="width:12%;background:color-mix(in srgb, var(--primary) 70%, var(--secondary));transition-delay:.1s"></span>
+        <span style="width:13%;background:var(--secondary);transition-delay:.2s"></span>
+        <span style="width:15%;background:var(--border);transition-delay:.3s"></span>
+        <span style="width:7%;background:color-mix(in srgb, var(--secondary) 60%, var(--surface-2));transition-delay:.4s"></span>
+        <span style="width:3%;background:var(--text-muted);transition-delay:.5s"></span>
+      </div>
+      <div class="legend">
+        <div class="lg"><i style="background:var(--primary)"></i><div><strong>50% Expert mining</strong><p>About 5 years, halving every 12 months</p></div></div>
+        <div class="lg"><i style="background:color-mix(in srgb, var(--primary) 70%, var(--secondary))"></i><div><strong>12% Reviewer rewards</strong><p>Gradual emission for peer review</p></div></div>
+        <div class="lg"><i style="background:var(--secondary)"></i><div><strong>13% Treasury and ecosystem</strong><p>Multisig, grants per profession</p></div></div>
+        <div class="lg"><i style="background:var(--border)"></i><div><strong>15% Team</strong><p>12-month cliff, 36-month linear vesting</p></div></div>
+        <div class="lg"><i style="background:color-mix(in srgb, var(--secondary) 60%, var(--surface-2))"></i><div><strong>7% Liquidity</strong><p>LP locked for at least 12 months</p></div></div>
+        <div class="lg"><i style="background:var(--text-muted)"></i><div><strong>3% Early experts</strong><p>The first 1,000 verified experts</p></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- LABS -->
+<section id="labs" style="padding-bottom:100px">
+  <div class="wrap">
+    <div class="labs reveal">
+      <div style="position:relative;z-index:1">
+        <h2 style="font-size:clamp(28px,3.4vw,44px)">For AI labs and vertical AI teams</h2>
+        <p style="margin-top:16px;max-width:30em">License expert-level evaluation sets that have never been on the open web. Every case is peer verified, tested against current models and watermarked per buyer.</p>
+      </div>
+      <div style="position:relative;z-index:1;display:flex;flex-direction:column;gap:14px">
+        <p><strong style="color:var(--text)">Dataset licenses</strong> by profession, by subscription or batch, with optional exclusivity.</p>
+        <p><strong style="color:var(--text)">Custom eval sprints</strong> fund a competition in exactly the domain you need.</p>
+        <div style="display:flex;gap:14px;flex-wrap:wrap;margin-top:8px">
+          <a class="btn btn-primary" href="/ai-labs">Request dataset access</a>
+          <a class="btn btn-ghost" href="/bounty-sprints">Fund a sprint</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+</div> <!-- END OF #view-home -->
+
+<!-- DEDICATED PAGE 1: SUBMIT AN EXPERT CASE (/submit) -->
+<div class="page-view" id="view-submit" style="display:none">
+  <div class="wrap page-container">
+    <nav class="page-breadcrumb" aria-label="Breadcrumb">
+      <a href="/" class="breadcrumb-link"><outthink-icon name="arrow_left" size="14"></outthink-icon> <span>Home</span></a>
+      <span class="breadcrumb-sep">/</span>
+      <span class="breadcrumb-current">Submit an Expert Case</span>
+    </nav>
+    <div class="page-card">
+      <div style="margin-bottom:28px">
+        <span class="chip" style="margin-bottom:12px"><span class="live"></span>Arena Submission Studio</span>
+        <h1 style="font-size:32px;margin:10px 0 6px">Submit an Expert Case</h1>
+        <p style="color:var(--ink-2)">Provide a real scenario from your work that stumps today's best models. Content stays private; only its hash records on-chain.</p>
+      </div>
+
+      <form id="caseSubmitForm" autocomplete="off">
+        <div class="form-grid-2">
+          <div class="form-group">
+            <label for="caseProfessionSelect">Profession</label>
+            <select class="form-control" id="caseProfessionSelect" required>
+              <option value="medicine">Medicine (Diagnosis &amp; Lab)</option>
+              <option value="law">Law (Cross-Border &amp; Statutory)</option>
+              <option value="software_engineering">Software Engineering (Systems &amp; Debugging)</option>
+              <option value="trades_mechanics">Trades &amp; Mechanics (Diagnostics)</option>
+              <option value="accounting_tax">Accounting &amp; Tax (International &amp; Entity)</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="caseSubspecialtyInput">Subspecialty</label>
+            <input type="text" class="form-control" id="caseSubspecialtyInput" placeholder="e.g. Interventional Cardiology, Distributed Systems" required>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="caseTitleInput">Case Title</label>
+          <input type="text" class="form-control" id="caseTitleInput" placeholder="e.g. Chest pain with subtle aVR elevation in subendocardial ischemia" required>
+        </div>
+
+        <div class="form-group">
+          <label for="casePromptInput">Scenario Prompt (Clinical / Technical context)</label>
+          <textarea class="form-control" id="casePromptInput" placeholder="Describe the full patient history, lab values, system architecture, or diagnostic parameters..." required></textarea>
+          <div id="piiScannerNotice" class="pii-alert" style="display:none"></div>
+        </div>
+
+        <div class="form-group">
+          <label for="caseQuestionInput">Core Question for the AI Panel</label>
+          <input type="text" class="form-control" id="caseQuestionInput" placeholder="e.g. What is the immediate anatomical culprit and what is the definitive emergency management?" required>
+        </div>
+
+        <div class="form-group">
+          <label for="caseAnswerInput">Expert Correct Answer</label>
+          <textarea class="form-control" id="caseAnswerInput" placeholder="Your verified definitive answer..." required></textarea>
+        </div>
+
+        <div class="form-group">
+          <label for="caseExplanationInput">Explanation (Why standard AI models fail on this case)</label>
+          <textarea class="form-control" id="caseExplanationInput" placeholder="Explain the superficial reasoning trap that models fall into..." required></textarea>
+        </div>
+
+        <div class="form-group">
+          <span class="form-group-label" id="attachmentDropzoneLabel">Attachments (Scans, Waveforms, Schematics, Code Diffs - S3 Encrypted)</span>
+          <label class="dropzone" id="attachmentDropzone" for="caseAttachmentFileInput">
+            <span class="dropzone-icon"><outthink-icon name="upload" size="22"></outthink-icon></span>
+            <span class="dropzone-text">
+              <strong>Drag files here or browse</strong>
+              <small>PNG, JPG, DICOM, PDF, TXT, MD, CSV, JSON, JS, TS, PY, SOL, DIFF, WAV, MP3 up to 10 MB each, max 5 files</small>
+            </span>
+            <input type="file" id="caseAttachmentFileInput" class="visually-hidden" multiple accept=".png,.jpg,.jpeg,.gif,.webp,.dcm,.pdf,.txt,.md,.csv,.json,.js,.ts,.py,.sol,.diff,.patch,.wav,.mp3,.zip">
+          </label>
+          <div class="field-error" id="attachmentError" role="alert"></div>
+          <ul class="file-list" id="attachmentListPreview" aria-live="polite"></ul>
+          <div style="margin-top:12px">
+            <button type="button" class="btn btn-ghost" id="uploadAttachmentBtn" style="min-height:42px;font-size:13px;white-space:nowrap">Scan &amp; Encrypt</button>
+          </div>
+        </div>
+
+        <div style="background:color-mix(in srgb, var(--primary) 10%, var(--surface-2));border:1px solid color-mix(in srgb, var(--primary) 30%, var(--border));padding:12px 16px;border-radius:12px;margin-bottom:20px;font-size:13px;color:var(--text);display:flex;align-items:center;gap:10px">
+          <outthink-icon name="shield" size="20"></outthink-icon>
+          <div><strong>Anti-Spam &amp; Multi-Tier Rewards:</strong> Tier 0 contributors deposit a 50 $OUTTHINK refundable stake, returned automatically when peer consensus validates the case. Tier 1 &amp; 2 contributors submit freely with 1.5x–2.5x reward multipliers.</div>
+        </div>
+
+        <div id="submissionStatusBox" style="display:none;margin-bottom:20px"></div>
+
+        <button type="submit" class="btn btn-human" id="submitCaseBtn" style="width:100%">Run AI Panel &amp; Submit Case</button>
+      </form>
+    </div>
+  </div>
+</div>
+
+<!-- DEDICATED PAGE 2: PENDING EXPERT REVIEW QUEUE (/review-queue) -->
+<div class="page-view" id="view-review-queue" style="display:none">
+  <div class="wrap page-container">
+    <nav class="page-breadcrumb" aria-label="Breadcrumb">
+      <a href="/" class="breadcrumb-link"><outthink-icon name="arrow_left" size="14"></outthink-icon> <span>Home</span></a>
+      <span class="breadcrumb-sep">/</span>
+      <span class="breadcrumb-current">Pending Expert Review Queue</span>
+    </nav>
+    <div class="page-card">
+      <div style="margin-bottom:28px">
+        <span class="chip" style="margin-bottom:12px"><span class="live"></span>Peer Review Consensus</span>
+        <h1 style="font-size:32px;margin:10px 0 6px">Pending Expert Review Queue</h1>
+        <p style="color:var(--ink-2)">Cases that beat the majority of the AI panel. Two or three verified peers must confirm validity before reward settlement.</p>
+      </div>
+      <div id="reviewsQueueContainer">
+        <div class="skeleton-stack">
+          <div class="skeleton-card">
+            <div class="skeleton-box" style="width:40%;height:18px;margin-bottom:12px"></div>
+            <div class="skeleton-box" style="width:90%;height:14px;margin-bottom:8px"></div>
+            <div class="skeleton-box" style="width:70%;height:14px"></div>
+          </div>
+          <div class="skeleton-card">
+            <div class="skeleton-box" style="width:35%;height:18px;margin-bottom:12px"></div>
+            <div class="skeleton-box" style="width:85%;height:14px;margin-bottom:8px"></div>
+            <div class="skeleton-box" style="width:60%;height:14px"></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- EXPANDABLE: VOTED REVIEWS BY USER -->
+      <section class="voted-reviews-section" id="votedReviewsSection" aria-label="Voted Reviews">
+        <button type="button" class="voted-reviews-toggle" id="votedReviewsToggle" aria-expanded="false" aria-controls="votedReviewsPanel">
+          <div class="voted-toggle-left">
+            <span class="voted-toggle-icon">
+              <outthink-icon name="review_queue" size="16"></outthink-icon>
+            </span>
+            <div class="voted-toggle-text">
+              <h2 class="voted-toggle-title">Your Voted Reviews</h2>
+              <span class="voted-toggle-subtitle">Reviews you have participated in</span>
+            </div>
+            <span class="voted-count-badge" id="votedCountBadge" aria-label="0 voted reviews">0</span>
+          </div>
+          <div class="voted-toggle-right">
+            <span class="voted-toggle-label" id="votedToggleLabel">Show</span>
+            <span class="voted-chevron-wrapper">
+              <outthink-icon name="chevron_down" size="16" class="voted-toggle-chevron"></outthink-icon>
+            </span>
+          </div>
+        </button>
+
+        <div class="voted-reviews-panel" id="votedReviewsPanel" role="region" aria-labelledby="votedReviewsToggle" style="display:none">
+          <div class="voted-reviews-list" id="votedReviewsList">
+            <div class="voted-empty-state">
+              <div class="voted-empty-icon-wrap">
+                <outthink-icon name="review_queue" size="24"></outthink-icon>
+              </div>
+              <h3 class="voted-empty-title">No Voted Reviews Yet</h3>
+              <p class="voted-empty-desc">When you vote on pending cases in the queue above, your review history and consensus tracking will appear here.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+  </div>
+</div>
+
+<!-- DEDICATED PAGE 3: EXPERT LEADERBOARD (/leaderboard) -->
+<div class="page-view" id="view-leaderboard" style="display:none">
+  <div class="wrap page-container">
+    <nav class="page-breadcrumb" aria-label="Breadcrumb">
+      <a href="/" class="breadcrumb-link"><outthink-icon name="arrow_left" size="14"></outthink-icon> <span>Home</span></a>
+      <span class="breadcrumb-sep">/</span>
+      <span class="breadcrumb-current">Expert Leaderboard</span>
+    </nav>
+    <div class="page-card">
+      <div style="margin-bottom:28px">
+        <span class="chip" style="margin-bottom:12px">Arena Standings</span>
+        <h1 style="font-size:32px;margin:10px 0 6px">Expert Leaderboard</h1>
+        <p style="color:var(--ink-2)">Top ranked contributors with verified AI defeats, reputation, and badges.</p>
+      </div>
+      <div id="leaderboardContainer">
+        <div class="skeleton-stack">
+          <div class="skeleton-card" style="display:flex;justify-content:space-between;align-items:center;padding:16px">
+            <div class="skeleton-box" style="width:45%;height:20px"></div>
+            <div class="skeleton-box" style="width:25%;height:20px"></div>
+          </div>
+          <div class="skeleton-card" style="display:flex;justify-content:space-between;align-items:center;padding:16px">
+            <div class="skeleton-box" style="width:40%;height:20px"></div>
+            <div class="skeleton-box" style="width:25%;height:20px"></div>
+          </div>
+          <div class="skeleton-card" style="display:flex;justify-content:space-between;align-items:center;padding:16px">
+            <div class="skeleton-box" style="width:50%;height:20px"></div>
+            <div class="skeleton-box" style="width:25%;height:20px"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- DEDICATED PAGE 4: VIRAL SHARE CARD STUDIO (/share-studio) -->
+<div class="page-view" id="view-share-studio" style="display:none">
+  <div class="wrap page-container">
+    <nav class="page-breadcrumb" aria-label="Breadcrumb">
+      <a href="/" class="breadcrumb-link"><outthink-icon name="arrow_left" size="14"></outthink-icon> <span>Home</span></a>
+      <span class="breadcrumb-sep">/</span>
+      <span class="breadcrumb-current">Viral Share Card Studio</span>
+    </nav>
+    <div class="page-card">
+      <div style="margin-bottom:28px">
+        <span class="chip" style="margin-bottom:12px"><span class="live"></span>Viral Share Studio</span>
+        <h1 style="font-size:32px;margin:10px 0 6px">Viral Share Card Studio</h1>
+        <p style="color:var(--ink-2)">Share what you beat on LinkedIn and X without leaking private case content.</p>
+      </div>
+      <div class="share-card-container">
+        <span class="share-card-badge" id="sharePreviewBadgeModal">Top 1% Human Edge, Cardiology</span>
+        <h2 class="share-card-title" style="font-size:32px;margin:20px 0 10px" id="sharePreviewSubModal">My case beat 4 of 5 AI models</h2>
+        <p class="share-card-desc">Verified on OutThink AI • Private Evaluation Benchmark</p>
+        <div class="share-card-proof">Proof: content hash anchored per case • Robinhood Chain</div>
+      </div>
+      <div style="margin-top:24px;display:flex;gap:12px;flex-wrap:wrap">
+        <button class="btn btn-human" style="flex:1" onclick="navigator.clipboard?.writeText(window.location.origin + '/share-studio'); showToast('Share badge link copied to clipboard!', 'success');">
+          <outthink-icon name="copy" size="16"></outthink-icon> Copy Share Link
+        </button>
+        <a href="/#share-studio" class="btn btn-ghost" style="display:inline-flex;align-items:center;gap:6px">
+          <outthink-icon name="share" size="16"></outthink-icon> Open 3D Arena Studio
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- DEDICATED PAGE 5: PRIVATE EVALUATION CATALOG (/ai-labs) -->
+<div class="page-view" id="view-ai-labs" style="display:none">
+  <div class="wrap page-container">
+    <nav class="page-breadcrumb" aria-label="Breadcrumb">
+      <a href="/" class="breadcrumb-link"><outthink-icon name="arrow_left" size="14"></outthink-icon> <span>Home</span></a>
+      <span class="breadcrumb-sep">/</span>
+      <span class="breadcrumb-current">AI Labs &amp; Research</span>
+    </nav>
+    <div class="page-card">
+      <div style="margin-bottom:28px">
+        <span class="chip" style="margin-bottom:12px">AI Labs &amp; Research</span>
+        <h1 style="font-size:32px;margin:10px 0 6px">Private Evaluation Catalog</h1>
+        <p style="color:var(--ink-2)">License peer-verified expert datasets. Every export is embedded with cryptographic buyer watermarking.</p>
+      </div>
+      <div id="buyerCatalogGrid">
+        <div class="panel catalog-panel skeleton-card" aria-busy="true" aria-label="Loading dataset...">
+          <div class="catalog-panel-top">
+            <div class="skeleton-box" style="width:110px;height:24px;border-radius:999px"></div>
+            <div class="skeleton-box" style="width:95px;height:22px;border-radius:6px"></div>
+          </div>
+          <div class="catalog-panel-header">
+            <div class="skeleton-box" style="width:60%;height:24px;margin-bottom:6px"></div>
+            <div class="skeleton-box" style="width:85%;height:14px"></div>
+          </div>
+          <div class="catalog-metrics-grid">
+            <div class="catalog-metric-card">
+              <div class="skeleton-box" style="width:70%;height:11px;margin-bottom:6px"></div>
+              <div class="skeleton-box" style="width:50%;height:20px;margin-bottom:6px"></div>
+              <div class="skeleton-box" style="width:100%;height:5px;border-radius:999px"></div>
+            </div>
+            <div class="catalog-metric-card">
+              <div class="skeleton-box" style="width:60%;height:11px;margin-bottom:6px"></div>
+              <div class="skeleton-box" style="width:45%;height:20px;margin-bottom:6px"></div>
+              <div class="skeleton-box" style="width:70%;height:12px;border-radius:4px"></div>
+            </div>
+          </div>
+          <div class="catalog-panel-footnote">
+            <div class="skeleton-box" style="width:80%;height:12px"></div>
+          </div>
+          <div class="catalog-panel-footer">
+            <div class="skeleton-box" style="width:100%;height:42px;border-radius:999px"></div>
+          </div>
+        </div>
+
+        <div class="panel catalog-panel skeleton-card" aria-busy="true" aria-label="Loading dataset...">
+          <div class="catalog-panel-top">
+            <div class="skeleton-box" style="width:125px;height:24px;border-radius:999px"></div>
+            <div class="skeleton-box" style="width:95px;height:22px;border-radius:6px"></div>
+          </div>
+          <div class="catalog-panel-header">
+            <div class="skeleton-box" style="width:55%;height:24px;margin-bottom:6px"></div>
+            <div class="skeleton-box" style="width:80%;height:14px"></div>
+          </div>
+          <div class="catalog-metrics-grid">
+            <div class="catalog-metric-card">
+              <div class="skeleton-box" style="width:70%;height:11px;margin-bottom:6px"></div>
+              <div class="skeleton-box" style="width:48%;height:20px;margin-bottom:6px"></div>
+              <div class="skeleton-box" style="width:100%;height:5px;border-radius:999px"></div>
+            </div>
+            <div class="catalog-metric-card">
+              <div class="skeleton-box" style="width:60%;height:11px;margin-bottom:6px"></div>
+              <div class="skeleton-box" style="width:40%;height:20px;margin-bottom:6px"></div>
+              <div class="skeleton-box" style="width:65%;height:12px;border-radius:4px"></div>
+            </div>
+          </div>
+          <div class="catalog-panel-footnote">
+            <div class="skeleton-box" style="width:75%;height:12px"></div>
+          </div>
+          <div class="catalog-panel-footer">
+            <div class="skeleton-box" style="width:100%;height:42px;border-radius:999px"></div>
+          </div>
+        </div>
+
+        <div class="panel catalog-panel skeleton-card" aria-busy="true" aria-label="Loading dataset...">
+          <div class="catalog-panel-top">
+            <div class="skeleton-box" style="width:115px;height:24px;border-radius:999px"></div>
+            <div class="skeleton-box" style="width:95px;height:22px;border-radius:6px"></div>
+          </div>
+          <div class="catalog-panel-header">
+            <div class="skeleton-box" style="width:65%;height:24px;margin-bottom:6px"></div>
+            <div class="skeleton-box" style="width:90%;height:14px"></div>
+          </div>
+          <div class="catalog-metrics-grid">
+            <div class="catalog-metric-card">
+              <div class="skeleton-box" style="width:70%;height:11px;margin-bottom:6px"></div>
+              <div class="skeleton-box" style="width:52%;height:20px;margin-bottom:6px"></div>
+              <div class="skeleton-box" style="width:100%;height:5px;border-radius:999px"></div>
+            </div>
+            <div class="catalog-metric-card">
+              <div class="skeleton-box" style="width:60%;height:11px;margin-bottom:6px"></div>
+              <div class="skeleton-box" style="width:42%;height:20px;margin-bottom:6px"></div>
+              <div class="skeleton-box" style="width:70%;height:12px;border-radius:4px"></div>
+            </div>
+          </div>
+          <div class="catalog-panel-footnote">
+            <div class="skeleton-box" style="width:85%;height:12px"></div>
+          </div>
+          <div class="catalog-panel-footer">
+            <div class="skeleton-box" style="width:100%;height:42px;border-radius:999px"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- DEDICATED PAGE 6: EXPERT ONBOARDING & TIER VERIFICATION (/onboarding) -->
+<div class="page-view" id="view-onboarding" style="display:none">
+  <div class="wrap page-container">
+    <nav class="page-breadcrumb" aria-label="Breadcrumb">
+      <a href="/" class="breadcrumb-link"><outthink-icon name="arrow_left" size="14"></outthink-icon> <span>Home</span></a>
+      <span class="breadcrumb-sep">/</span>
+      <span class="breadcrumb-current">Expert Onboarding &amp; Tier Verification</span>
+    </nav>
+    <div class="page-card">
+      <div style="margin-bottom:28px">
+        <nav class="onboarding-stepper" aria-label="Onboarding Progress">
+          <div class="stepper-item active" id="stepperStep1" aria-current="step">
+            <span class="stepper-badge">1</span>
+            <span class="stepper-label">Professional Identity &amp; Tier Matrix</span>
+          </div>
+          <span class="stepper-divider" aria-hidden="true"></span>
+          <div class="stepper-item" id="stepperStep2">
+            <span class="stepper-badge">2</span>
+            <span class="stepper-label">Case Submission</span>
+          </div>
+        </nav>
+        <h1 style="font-size:32px;margin:10px 0 6px">Expert Onboarding &amp; Tier Verification</h1>
+        <p style="color:var(--ink-2)">Verify your credentials to qualify for higher mining multipliers (up to 2.5x), peer review rights, and exclusive on-chain badges.</p>
+      </div>
+
+      <!-- Tier Matrix Cards -->
+      <h2 style="font-size:20px;font-weight:600;margin-bottom:14px">Tier Qualification Matrix</h2>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:16px;margin-bottom:24px">
+        <div class="tier" style="padding:20px;margin-top:0" id="tierCard0">
+          <span class="lvl">Tier 0</span>
+          <h3 style="font-size:18px;margin:4px 0">Open Access</h3>
+          <p style="font-size:13px;color:var(--ink-2)">Anyone can submit. 1.0x reward multiplier. 50 $OUTTHINK refundable anti-spam stake.</p>
+        </div>
+        <div class="tier" style="padding:20px;margin-top:0;border-color:var(--machine)" id="tierCard1">
+          <span class="lvl" style="color:var(--machine)">Tier 1</span>
+          <h3 style="font-size:18px;margin:4px 0">Work Verified</h3>
+          <p style="font-size:13px;color:var(--ink-2)">Verified via LinkedIn or institutional email. 1.5x reward multiplier.</p>
+        </div>
+        <div class="tier top" style="padding:20px;margin-top:0" id="tierCard2">
+          <span class="lvl" style="color:var(--primary)">Tier 2</span>
+          <h3 style="font-size:18px;margin:4px 0">Licensed Professional</h3>
+          <p style="font-size:13px;color:var(--ink-2)">Official state license verification. 2.5x multiplier + "AI Slayer" badge.</p>
+        </div>
+      </div>
+
+      <div id="onboardExistingState" style="display:none;margin-bottom:20px"></div>
+
+      <form id="expertOnboardForm">
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px">
+          <div class="form-group">
+            <label>Full Name / Pseudonym</label>
+            <input type="text" class="form-control" id="onboardName" placeholder="Dr. Evelyn Reed, MD" required>
+          </div>
+          <div class="form-group">
+            <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:6px">
+              <label style="margin:0">EVM Wallet (MetaMask / Rabby)</label>
+              <button type="button" class="btn btn-ghost" id="onboardConnectWalletBtn" style="padding:2px 10px;font-size:12px;min-height:28px">Auto-fill Web3 Wallet</button>
+            </div>
+            <input type="text" class="form-control" id="onboardWallet" placeholder="0x wallet address" readonly>
+          </div>
+        </div>
+
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px">
+          <div class="form-group">
+            <label>Email Address</label>
+            <input type="email" class="form-control" id="onboardEmail" placeholder="expert@hospital-or-firm.org" required>
+          </div>
+          <div class="form-group">
+            <label>Primary Profession</label>
+            <select class="form-control" id="onboardProfession" required>
+              <option value="medicine">Medicine (Diagnosis &amp; Lab)</option>
+              <option value="law">Law (Cross-Border &amp; Statutory)</option>
+              <option value="software_engineering">Software Engineering (Systems &amp; Debugging)</option>
+              <option value="trades_mechanics">Trades &amp; Mechanics (Diagnostics)</option>
+              <option value="accounting_tax">Accounting &amp; Tax (International &amp; Entity)</option>
+            </select>
+          </div>
+        </div>
+
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px">
+          <div class="form-group">
+            <label>Subspecialty</label>
+            <input type="text" class="form-control" id="onboardSubspecialty" placeholder="e.g. Interventional Cardiology, Cross-Border M&amp;A" required>
+          </div>
+          <div class="form-group">
+            <label>Country / Jurisdiction</label>
+            <input type="text" class="form-control" id="onboardCountry" value="US" required>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label>Select Target Verification Tier</label>
+          <select class="form-control" id="onboardTierSelect">
+            <option value="0">Tier 0: Open Community (No credentials required)</option>
+            <option value="1">Tier 1: Work Verified (LinkedIn or institutional email)</option>
+            <option value="2">Tier 2: Licensed Practitioner (State board / professional license)</option>
+          </select>
+        </div>
+
+        <!-- Conditional Verification Fields -->
+        <div id="tier1Fields" style="display:none;background:var(--surface-2);border:1px solid var(--border);padding:16px;border-radius:14px;margin-bottom:16px">
+          <label style="font-size:14px;font-weight:600;display:block;margin-bottom:6px">LinkedIn Profile or Institutional Domain</label>
+          <input type="url" class="form-control" id="onboardLinkedIn" placeholder="https://linkedin.com/in/your-profile">
+        </div>
+
+        <div id="tier2Fields" style="display:none;background:var(--surface-2);border:1px solid var(--border);padding:16px;border-radius:14px;margin-bottom:16px">
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px">
+            <div>
+              <label style="font-size:14px;font-weight:600;display:block;margin-bottom:6px">Official License / Bar / Board Number</label>
+              <input type="text" class="form-control" id="onboardLicense" placeholder="e.g. CA-MD-98402, NY-BAR-51204">
+            </div>
+            <div>
+              <label style="font-size:14px;font-weight:600;display:block;margin-bottom:6px">Issuing Board / State Agency</label>
+              <input type="text" class="form-control" id="onboardIssuingBody" placeholder="e.g. California Medical Board">
+            </div>
+          </div>
+        </div>
+
+        <div id="onboardStatusBox" style="display:none;margin-bottom:16px"></div>
+        <button type="submit" class="btn btn-primary" id="onboardSubmitBtn" style="width:100%">Complete Registration &amp; Join Arena</button>
+      </form>
+    </div>
+  </div>
+</div>
+
+<!-- DEDICATED PAGE 7: MONTHLY PR BENCHMARK INTELLIGENCE REPORT (/monthly-report) -->
+<div class="page-view" id="view-monthly-report" style="display:none">
+  <div class="wrap page-container">
+    <nav class="page-breadcrumb" aria-label="Breadcrumb">
+      <a href="/" class="breadcrumb-link"><outthink-icon name="arrow_left" size="14"></outthink-icon> <span>Home</span></a>
+      <span class="breadcrumb-sep">/</span>
+      <span class="breadcrumb-current">Monthly Benchmark Intelligence Report</span>
+    </nav>
+    <div class="page-card">
+      <div style="margin-bottom:28px">
+        <span class="chip" style="margin-bottom:12px"><span class="live"></span>Viral PR &amp; Media Intelligence</span>
+        <h1 style="font-size:32px;margin:10px 0 6px" id="reportModalTitle">Where Frontier AI Still Breaks</h1>
+        <p style="color:var(--ink-2)" id="reportModalHeadline">Loading latest monthly intelligence report...</p>
+      </div>
+
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:14px;margin-bottom:24px" id="reportMetricsGrid">
+        <!-- Injected metrics -->
+      </div>
+
+      <div style="background:var(--surface-2);border:1px solid var(--border);padding:20px;border-radius:16px;margin-bottom:24px">
+        <h2 style="font-size:18px;margin-bottom:8px">Executive Summary</h2>
+        <p style="font-size:14px;color:var(--ink-2);line-height:1.6" id="reportExecSummary">Loading...</p>
+      </div>
+
+      <h2 style="font-size:20px;margin-bottom:14px">Top Failing AI Reasoning Archetypes</h2>
+      <div id="reportArchetypesList" style="display:flex;flex-direction:column;gap:12px;margin-bottom:24px">
+        <!-- Injected archetypes -->
+      </div>
+
+      <div style="display:flex;gap:12px;flex-wrap:wrap">
+        <button class="btn btn-human" id="copyPressReleaseBtn" style="flex:1">
+          <outthink-icon name="press" size="18"></outthink-icon> Copy Press Release Summary
+        </button>
+        <button class="btn btn-ghost" id="downloadReportJsonBtn">
+          <outthink-icon name="download" size="18"></outthink-icon> Export Report Data
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- DEDICATED PAGE 8: BOUNTY SPRINTS & CUSTOM EVAL (/bounty-sprints) -->
+<div class="page-view" id="view-bounty-sprints" style="display:none">
+  <div class="wrap page-container">
+    <nav class="page-breadcrumb" aria-label="Breadcrumb">
+      <a href="/" class="breadcrumb-link"><outthink-icon name="arrow_left" size="14"></outthink-icon> <span>Home</span></a>
+      <span class="breadcrumb-sep">/</span>
+      <span class="breadcrumb-current">Bounty Sprints</span>
+    </nav>
+    <div class="page-card">
+      <div style="margin-bottom:28px">
+        <span class="chip" style="margin-bottom:12px">Domain Challenges</span>
+        <h1 style="font-size:32px;margin:10px 0 6px">Active Custom Eval Sprints</h1>
+        <p style="color:var(--ink-2)">AI Labs sponsor targeted evaluation prize pools in specialized domains, driving direct $OUTTHINK token demand and cash rewards.</p>
+      </div>
+
+      <div id="sprintsContainer" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:16px;margin-bottom:28px">
+        <div class="skeleton-card" style="height:180px">
+          <div class="skeleton-box" style="width:35%;height:16px;margin-bottom:14px"></div>
+          <div class="skeleton-box" style="width:75%;height:20px;margin-bottom:12px"></div>
+          <div class="skeleton-box" style="width:85%;height:14px"></div>
+        </div>
+        <div class="skeleton-card" style="height:180px">
+          <div class="skeleton-box" style="width:30%;height:16px;margin-bottom:14px"></div>
+          <div class="skeleton-box" style="width:70%;height:20px;margin-bottom:12px"></div>
+          <div class="skeleton-box" style="width:80%;height:14px"></div>
+        </div>
+      </div>
+
+      <div style="background:var(--surface-2);border:1px solid var(--border);padding:24px;border-radius:18px">
+        <h2 style="font-size:18px;margin-bottom:8px">Sponsor a Custom Domain Sprint (AI Labs &amp; Foundations)</h2>
+        <p style="font-size:13px;color:var(--ink-2);margin-bottom:16px">Fund a dedicated high-stakes benchmark competition for your vertical model (e.g. Oncology, Smart Contracts, Aviation Engineering).</p>
+        <form id="createSprintForm">
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:14px">
+            <input type="text" class="form-control" id="sprintSponsorName" placeholder="Organization / Lab Name" required>
+            <input type="text" class="form-control" id="sprintTitle" placeholder="Sprint Title (e.g. Oncology Diagnostic Trap Sprint)" required>
+          </div>
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:14px">
+            <input type="text" class="form-control" id="sprintDomain" placeholder="Target Subspecialty (e.g. Molecular Pathology)" required>
+            <select class="form-control" id="sprintProfession">
+              <option value="medicine">Medicine</option>
+              <option value="law">Law</option>
+              <option value="software_engineering">Software Engineering</option>
+              <option value="trades_mechanics">Trades &amp; Mechanics</option>
+              <option value="accounting_tax">Accounting &amp; Tax</option>
+            </select>
+          </div>
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:16px">
+            <input type="number" class="form-control" id="sprintPrizeEdge" placeholder="Prize Pool ($OUTTHINK) e.g. 150000" required>
+            <input type="number" class="form-control" id="sprintPrizeUsdc" placeholder="Prize Pool (USDC) e.g. 25000" required>
+          </div>
+          <button type="submit" class="btn btn-primary" style="width:100%">Create &amp; Fund Bounty Sprint Pool</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+</main>
+
+<footer>
+  <div class="wrap">
+    <h2 class="foot-big" id="footBig"><span class="w">Think</span> <span class="w">AI</span> <span class="w">can't</span> <span class="w">do</span> <span class="w">your</span> <span class="w">job?</span> <span class="w">Prove</span> <span class="w">it.</span></h2>
+    <div style="margin-top:36px">
+      <a class="btn btn-human" href="/submit">Submit your first case</a>
+    </div>
+
+    <!-- Domain Typography Switcher in Footer -->
+    <div class="footer-theme-section" style="border-top:1px solid var(--line);padding-top:28px;margin-top:40px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:16px">
+      <div style="display:flex;align-items:center;gap:14px">
+        <span style="font-size:13px;font-weight:700;color:var(--ink-3);text-transform:uppercase;letter-spacing:0.04em">Domain Typography</span>
+        <div class="theme-picker-wrapper">
+          <button class="theme-picker-btn" id="themePickerBtn" title="Switch domain-specific typography">
+            <outthink-icon name="typography" size="16"></outthink-icon>
+            <span id="activeThemeLabel">Benchmark</span>
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
+          </button>
+          <div class="theme-picker-dropdown dropup" id="themePickerDropdown">
+            <div style="padding:4px 8px;font-size:11px;font-weight:700;color:var(--ink-3);text-transform:uppercase;letter-spacing:0.04em">Domain Typography</div>
+            <button class="theme-opt active" data-font-opt="benchmark">
+              <outthink-icon name="benchmark" size="16"></outthink-icon>
+              <div><strong>Benchmark</strong><br><small>Unbounded + Instrument</small></div>
+              <span class="badge-sm">Default</span>
+            </button>
+            <button class="theme-opt" data-font-opt="clinical">
+              <outthink-icon name="medicine" size="16"></outthink-icon>
+              <div><strong>Clinical</strong><br><small>Newsreader + Jakarta</small></div>
+              <span class="badge-sm">Medicine</span>
+            </button>
+            <button class="theme-opt" data-font-opt="legal">
+              <outthink-icon name="law" size="16"></outthink-icon>
+              <div><strong>Jurisprudence</strong><br><small>Fraunces + Source Serif</small></div>
+              <span class="badge-sm">Law</span>
+            </button>
+            <button class="theme-opt" data-font-opt="systems">
+              <outthink-icon name="software" size="16"></outthink-icon>
+              <div><strong>Systems</strong><br><small>Space Grotesk + DM Sans</small></div>
+              <span class="badge-sm">Engineering</span>
+            </button>
+            <button class="theme-opt" data-font-opt="financial">
+              <outthink-icon name="tax" size="16"></outthink-icon>
+              <div><strong>Financial</strong><br><small>Syne + Outfit</small></div>
+              <span class="badge-sm">Tax</span>
+            </button>
+            <button class="theme-opt" data-font-opt="diagnostics">
+              <outthink-icon name="diagnostics" size="16"></outthink-icon>
+              <div><strong>Diagnostics</strong><br><small>Barlow Condensed + IBM Plex Sans</small></div>
+              <span class="badge-sm">Trades</span>
+            </button>
+          </div>
+        </div>
+      </div>
+      <div style="font-size:13px;color:var(--ink-3)">
+        Dynamic domain-specific typography tuned for professional evaluation.
+      </div>
+    </div>
+
+    <div class="footer-legal" style="display:flex;gap:20px;flex-wrap:wrap;margin-top:26px;padding-top:18px;border-top:1px solid var(--line);font-size:13px">
+      <a href="/privacy">Privacy</a>
+      <a href="/terms">Terms</a>
+      <a href="/contact">Contact</a>
+    </div>
+
+    <div class="meta">
+      <span>OutThink AI. Case hashes are anchored on Robinhood Chain when the writer wallet is funded; until then a case shows as pending.</span>
+      <span>Models are named only by what was tested. No AI lab endorses this arena. Nothing here is financial advice.</span>
+      <a href="https://x.com/outthinkai" target="_blank" rel="noopener noreferrer" class="social-x-btn" title="Follow OutThink AI on X" aria-label="Follow OutThink AI on X" role="button">
+        <outthink-icon name="x" size="16"></outthink-icon>
+      </a>
+    </div>
+  </div>
+</footer>
+
+<script>
+(function(){
+  var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var narrow = window.matchMedia('(max-width: 1023px)');
+  var flat = reduce || narrow.matches;
+  var vh = function(){ return window.innerHeight; };
+  var clamp = function(v,a,b){ return Math.max(a, Math.min(b, v)); };
+
+  /* ticker */
+  var items = [
+    ['Differential diagnosis','M12 4v16M4 12h16'],
+    ['Lab result interpretation','M9 3h6M10 3v6l-5 9a2 2 0 0 0 2 3h10a2 2 0 0 0 2-3l-5-9V3'],
+    ['Jurisdiction-specific case law','M12 3v18M5 7h14M7 7l-3 7a3 3 0 0 0 6 0zM17 7l-3 7a3 3 0 0 0 6 0z'],
+    ['Tax treatment','M4 4h16v16H4zM8 9h8M8 13h8M8 17h4'],
+    ['Production debugging','M8 9l-4 3 4 3M16 9l4 3-4 3M13 6l-2 12'],
+    ['Engine troubleshooting','M14 7l3-3 3 3-3 3M4 20l9-9'],
+    ['Audit judgment','M9 12l2 2 4-4M12 3l7 4v5c0 4.5-3 8-7 9-4-1-7-4.5-7-9V7z']
+  ];
+  var t = document.getElementById('ticker'), html = '';
+  // The marquee only needs a second copy of the items so the loop can scroll seamlessly; on
+  // touch layouts it stands still, so half the SVG parsing is simply wasted.
+  for (var r = 0; r < (flat ? 1 : 2); r++) items.forEach(function(it){
+    html += '<span class="ticker-item"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--primary)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="'+it[1]+'"/></svg>'+it[0]+'</span>';
+  });
+  t.innerHTML = html;
+
+  /* hero spotlight */
+  var hero = document.getElementById('hero');
+  hero.addEventListener('pointermove', function(e){
+    var b = hero.getBoundingClientRect();
+    hero.style.setProperty('--mx', (e.clientX - b.left) + 'px');
+    hero.style.setProperty('--my', (e.clientY - b.top) + 'px');
+  });
+
+  /* tilt */
+  if (!reduce) document.querySelectorAll('[data-tilt]').forEach(function(el){
+    el.addEventListener('pointermove', function(e){
+      var b = el.getBoundingClientRect();
+      var x = (e.clientX - b.left) / b.width - .5, y = (e.clientY - b.top) / b.height - .5;
+      el.style.transform = 'perspective(1000px) rotateY(' + (x * 8) + 'deg) rotateX(' + (-y * 8) + 'deg) translateY(-4px)';
+    });
+    el.addEventListener('pointerleave', function(){ el.style.transform = ''; });
+  });
+
+  /* duel loop */
+  var rows = Array.prototype.slice.call(document.querySelectorAll('#rows .row'));
+  var stamp = document.getElementById('stamp');
+  var duelVisible = true;
+  var duelBox = document.getElementById('duel');
+  if ('IntersectionObserver' in window && duelBox) {
+    new IntersectionObserver(function(entries){
+      duelVisible = entries[0].isIntersecting;
+    }, { rootMargin: '120px 0px' }).observe(duelBox);
+  }
+  function wait(ms){ return new Promise(function(res){ setTimeout(res, ms); }); }
+  function scan(row){
+    return new Promise(function(res){
+      var bar = row.querySelector('.bar i'), dur = Math.round(900 + Math.random() * 500);
+      row.classList.add('active');
+      // A compositor-driven animation keeps the fill off the main thread, where the old
+      // requestAnimationFrame loop used to recalculate style sixty times a second.
+      bar.classList.remove('fill');
+      bar.style.setProperty('--dur', dur + 'ms');
+      requestAnimationFrame(function(){ bar.classList.add('fill'); });
+      setTimeout(function(){
+        row.classList.remove('active');
+        row.querySelector('.verdict').classList.add('show');
+        res();
+      }, dur + 60);
+    });
+  }
+  function prepareDuelRound(){
+    var wrongCount = Math.random() < 0.5 ? 3 : 4;
+    var rightCount = 5 - wrongCount;
+    var rightIndices = [];
+    while (rightIndices.length < rightCount) {
+      var rand = Math.floor(Math.random() * rows.length);
+      if (rightIndices.indexOf(rand) === -1) {
+        rightIndices.push(rand);
+      }
+    }
+    var rightSvg = '<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" style="display:inline;vertical-align:-1px;margin-right:3px"><path d="M20 6L9 17l-5-5"/></svg>Right';
+    var wrongSvg = '<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" style="display:inline;vertical-align:-1px;margin-right:3px"><path d="M18 6L6 18M6 6l12 12"/></svg>Wrong';
+    for (var i = 0; i < rows.length; i++) {
+      var isRight = rightIndices.indexOf(i) !== -1;
+      var verdict = rows[i].querySelector('.verdict');
+      rows[i].setAttribute('data-v', isRight ? 'right' : 'wrong');
+      if (verdict) {
+        verdict.className = 'verdict ' + (isRight ? 'v-right' : 'v-wrong');
+        verdict.innerHTML = isRight ? rightSvg : wrongSvg;
+      }
+    }
+    if (stamp) {
+      var stampHeading = stamp.querySelector('p');
+      if (stampHeading) {
+        stampHeading.textContent = wrongCount + ' of 5 models got it wrong';
+      }
+    }
+  }
+  async function duel(){
+    if (reduce){
+      prepareDuelRound();
+      rows.forEach(function(r){ r.querySelector('.bar i').style.transform='scaleX(1)'; r.querySelector('.verdict').classList.add('show'); });
+      stamp.classList.add('show');
+      return;
+    }
+    while (true){
+      if (!duelVisible || document.hidden) { await wait(350); continue; }
+      rows.forEach(function(r){ var b = r.querySelector('.bar i'); b.classList.remove('fill'); b.style.transform='scaleX(0)'; r.querySelector('.verdict').classList.remove('show'); });
+      stamp.classList.remove('show');
+      prepareDuelRound();
+      await wait(900);
+      for (var i = 0; i < rows.length; i++){ await scan(rows[i]); await wait(180); }
+      await wait(400); stamp.classList.add('show');
+      await wait(3800);
+    }
+  }
+  // Starting the loop here would stack five more DOM writes on top of the parse task that is
+  // already holding the first paint, so the opening round waits for one painted frame.
+  requestAnimationFrame(function(){ setTimeout(duel, 0); });
+
+  /* reveal + one-shot triggers */
+  var io = new IntersectionObserver(function(entries){
+    entries.forEach(function(en){
+      if (!en.isIntersecting) return;
+      en.target.classList.add('in');
+      if (en.target.id === 'ixPanel') countAll(en.target);
+      if (en.target.id === 'allocWrap') countAll(en.target);
+      io.unobserve(en.target);
+    });
+  }, { threshold: .2 });
+  document.querySelectorAll('.reveal').forEach(function(el){ io.observe(el); });
+
+  function countAll(root){
+    root.querySelectorAll('[data-count]').forEach(function(el){
+      var end = +el.dataset.count, isPct = end <= 100, start = null, dur = 1600;
+      if (reduce){ el.textContent = isPct ? end + '%' : end.toLocaleString('en-US'); return; }
+      function step(ts){
+        if (!start) start = ts;
+        var p = clamp((ts - start) / dur, 0, 1), e = 1 - Math.pow(1 - p, 4), v = Math.round(end * e);
+        el.textContent = isPct ? v + '%' : v.toLocaleString('en-US');
+        if (p < 1) requestAnimationFrame(step);
+      }
+      requestAnimationFrame(step);
+    });
+  }
+
+  /* pinned chapters (scroll scrub) */
+  var pin = document.getElementById('how');
+  var chBtns = pin.querySelectorAll('.chapters button');
+  var chTexts = pin.querySelectorAll('.ch');
+  var cards = pin.querySelectorAll('.card3d');
+  var rail = document.getElementById('rail');
+  var N = cards.length;
+  function pinProgress(sec){
+    var b = sec.getBoundingClientRect();
+    return clamp(-b.top / (b.height - vh()), 0, 1);
+  }
+  function renderPin(){
+    var p = pinProgress(pin);
+    rail.style.setProperty('--p', p);
+    var f = p * (N - 1);
+    var active = clamp(Math.round(f), 0, N - 1);
+    chBtns.forEach(function(b, i){ b.classList.toggle('on', i === active); b.setAttribute('aria-selected', i === active); });
+    chTexts.forEach(function(c, i){ c.classList.toggle('on', i === active); });
+    cards.forEach(function(c, i){
+      var d = i - f;
+      var ty, tz, rx, op, sc;
+      if (d >= 0){ ty = d * -34; tz = d * -110; rx = 0; op = clamp(1 - d * .28, 0, 1); sc = 1; }
+      else { ty = -d * 420; tz = 0; rx = d * 18; op = clamp(1 + d * 1.4, 0, 1); sc = 1; }
+      c.style.transform = 'translate3d(0,' + ty + 'px,' + tz + 'px) rotateX(' + rx + 'deg) scale(' + sc + ')';
+      c.style.opacity = op;
+      c.style.zIndex = 10 - i;
+    });
+  }
+  chBtns.forEach(function(b){
+    b.addEventListener('click', function(){
+      var i = +b.dataset.ch;
+      if (flat) {
+        chBtns.forEach(function(x, j){ x.classList.toggle('on', j === i); x.setAttribute('aria-selected', j === i); });
+        chTexts[i].scrollIntoView({ behavior: 'smooth', block: 'center' });
+        return;
+      }
+      var top = pin.getBoundingClientRect().top + window.scrollY;
+      window.scrollTo({ top: top + (i / (N - 1)) * (pin.offsetHeight - vh()) + 2, behavior: 'smooth' });
+    });
+  });
+
+  /* horizontal token flow */
+  var hpin = document.getElementById('edge');
+  var htrack = document.getElementById('htrack');
+  var hrail = document.getElementById('hrail');
+  var hMax = 0;
+  function renderH(){
+    if (reduce) return;
+    var p = pinProgress(hpin);
+    htrack.style.transform = 'translate3d(' + (-p * hMax) + 'px,0,0)';
+    hrail.style.setProperty('--hp', p);
+  }
+
+  /* footer words light up */
+  var foot = document.getElementById('footBig');
+  var words = foot.querySelectorAll('.w');
+  function renderFoot(){
+    var b = foot.getBoundingClientRect();
+    var p = clamp((vh() - b.top) / (vh() * .7), 0, 1);
+    words.forEach(function(w, i){ w.classList.toggle('lit', reduce || p > i / words.length); });
+  }
+
+  /* nav + progress */
+  var bar = document.getElementById('progress'), nav = document.getElementById('nav');
+  var ticking = false;
+
+  /* geometry cache: measured lazily so the first paint never forces a full layout */
+  var geo = { pinTop: 0, pinBottom: 0, hTop: 0, hBottom: 0, fTop: 0, fBottom: 0, docH: 0 };
+  var geoReady = false;
+  function absTop(el){ return el.getBoundingClientRect().top + window.scrollY; }
+  function measure(){
+    geo.pinTop = absTop(pin); geo.pinBottom = geo.pinTop + pin.offsetHeight;
+    geo.hTop = absTop(hpin); geo.hBottom = geo.hTop + hpin.offsetHeight;
+    geo.fTop = absTop(foot); geo.fBottom = geo.fTop + foot.offsetHeight;
+    geo.docH = document.documentElement.scrollHeight - vh();
+    hMax = flat ? 0 : Math.max(0, htrack.scrollWidth - window.innerWidth + 64);
+    geoReady = true;
+  }
+  function inView(top, bottom){
+    var v = vh(), y = window.scrollY;
+    return y + v * 2 > top && y - v < bottom;
+  }
+  function frame(){
+    bar.style.transform = 'scaleX(' + (geo.docH > 0 ? window.scrollY / geo.docH : 0) + ')';
+    nav.classList.toggle('scrolled', window.scrollY > 10);
+    // Section offsets are only needed once the visitor actually starts scrolling
+    if (!geoReady && window.scrollY > 0) measure();
+    if (!geoReady) { ticking = false; return; }
+    if (!flat && inView(geo.pinTop, geo.pinBottom)) renderPin();
+    if (!flat && inView(geo.hTop, geo.hBottom)) renderH();
+    if (inView(geo.fTop, geo.fBottom)) renderFoot();
+    ticking = false;
+  }
+  function onScroll(){
+    if (ticking) return; ticking = true;
+    requestAnimationFrame(frame);
+  }
+  window.addEventListener('scroll', onScroll, { passive: true });
+  window.addEventListener('resize', function(){ geoReady = false; onScroll(); });
+  if (reduce){ cards.forEach(function(c){ c.style.position='relative'; c.style.left='auto'; c.style.top='auto'; c.style.margin='0 auto 16px'; }); document.getElementById('stack').style.height='auto'; chTexts.forEach(function(c){ c.classList.add('on'); c.style.position='relative'; }); }
+  onScroll();
+  // Webfonts reflow the text, so drop the cached offsets and let the next scroll re-measure
+  if (document.fonts && document.fonts.ready) document.fonts.ready.then(function(){ geoReady = false; });
+})();
+</script>
+<div class="toast-container" id="toastContainer" aria-live="polite" aria-atomic="true"></div>
+<!-- Mobile & Tablet App-Style Bottom Navigation (shadcn flavor) -->
+<nav class="bottom-nav" id="bottomNav" aria-label="Primary mobile navigation">
+  <a href="/" class="bottom-nav-item" data-route="/"><outthink-icon name="benchmark" size="20"></outthink-icon><span>Home</span></a>
+  <a href="/submit" class="bottom-nav-item" data-route="/submit"><outthink-icon name="submit_case" size="20"></outthink-icon><span>Submit</span></a>
+  <a href="/review-queue" class="bottom-nav-item" data-route="/review-queue"><outthink-icon name="review_queue" size="20"></outthink-icon><span>Reviews</span></a>
+  <a href="/leaderboard" class="bottom-nav-item" data-route="/leaderboard"><outthink-icon name="leaderboard" size="20"></outthink-icon><span>Ranks</span></a>
+  <button type="button" class="bottom-nav-item" id="bottomNavMenu" aria-label="Open full menu"><outthink-icon name="menu" size="20"></outthink-icon><span>Menu</span></button>
+</nav>
+<script>
+(function () {
+  var cv = document.getElementById('scene');
+  if (!cv) return;
+  var g = cv.getContext('2d'), off = document.createElement('canvas'), og = off.getContext('2d');
+  var texc = document.createElement('canvas'), texg = texc.getContext('2d');
+  var reduced = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var phone = matchMedia('(max-width: 1023px)');
+  var mobile = phone.matches;
+  var slides = [['Out', 'Think'], ['Prove', "It's", 'Yours'], ['Experts', 'Beat', 'AI']];
+  var tilts = [[-5, 2, -3], [3, -4, 2], [-2, 4, -5]];
+  var idx = 0, gl = 0, glT = 0, W = 0, H = 0, dpr = 1, inView = true, timer = 0;
+  var ptr = { x: 0, y: 0, tx: 0, ty: 0 };
+  var ink = '#1c160d', bgc = '#faf6ec', wash = [];
+  var num = document.querySelector('.hero-num b');
+  var dots = [].slice.call(document.querySelectorAll('.hero-dots button'));
+  var loading = document.querySelector('.hero-loading');
+
+  function readTheme() {
+    var s = getComputedStyle(document.documentElement);
+    var v = function (n) { return s.getPropertyValue(n).trim(); };
+    ink = v('--os-ink') || ink;
+    bgc = v('--os-bg') || bgc;
+    wash = ['--os-wash-a', '--os-wash-b', '--os-wash-c', '--os-wash-d'].map(v);
+  }
+  readTheme();
+
+  function size() {
+    dpr = Math.min(devicePixelRatio || 1, mobile ? 1.25 : 2);
+    W = cv.clientWidth; H = cv.clientHeight;
+    cv.width = off.width = texc.width = Math.round(W * dpr);
+    cv.height = off.height = texc.height = Math.round(H * dpr);
+  }
+  size();
+  // Writing a canvas width resets its bitmap. The phone loop stops once it has
+  // settled, so a resize (mobile URL bar collapsing on first scroll) used to
+  // wipe the hero words for good. Repaint explicitly instead.
+  function repaint() { settled = false; requestAnimationFrame(frame); }
+  // The word layer bakes the breakpoint into its geometry: phone slides sit at
+  // 30% of the hero with the smaller type scale, desktop slides at 50%. The
+  // flag used to be read once, so a window that started narrow kept phone
+  // geometry after widening and the headline looked pushed up into the nav.
+  function refresh() {
+    var wasMobile = mobile;
+    mobile = phone.matches;
+    size();
+    repaint();
+    if (wasMobile && !mobile) loadThree();
+  }
+  addEventListener('resize', refresh);
+  if (phone.addEventListener) phone.addEventListener('change', refresh);
+  else if (phone.addListener) phone.addListener(refresh);
+  addEventListener('pageshow', refresh);
+  document.addEventListener('visibilitychange', function () { if (!document.hidden) repaint(); });
+  addEventListener('themechange', readTheme);
+  if ('IntersectionObserver' in window) {
+    new IntersectionObserver(function (e) { inView = e[0].isIntersecting; }, { rootMargin: '120px 0px' }).observe(cv);
+  }
+  addEventListener('pointermove', function (e) {
+    ptr.tx = (e.clientX / innerWidth - 0.5) * 2;
+    ptr.ty = (e.clientY / innerHeight - 0.5) * 2;
+  }, { passive: true });
+
+  function fade(c) { return c.replace(/rgba\(([^)]+),\s*[\d.]+\)/, 'rgba($1,0)'); }
+  // The glass cube refracts this canvas, so it must carry the same warm wash
+  // the CSS hero paints behind the words (see ".hero" in styles.css). A flat
+  // paper fill made the cube read as a white slab instead of a window onto the
+  // gradient; the four stops below mirror the CSS gradient list exactly.
+  function paintWash(c) {
+    var at = [[0.08, 0.14], [0.9, 0.3], [0.92, 0.92], [0.4, 1]];
+    var tone = [0, 1, 3, 2];
+    c.save();
+    c.fillStyle = bgc; c.fillRect(0, 0, W, H);
+    at.forEach(function (p, i) {
+      var col = wash[tone[i]] || 'rgba(0,0,0,0)';
+      c.save();
+      c.translate(p[0] * W, p[1] * H);
+      c.scale(W * 0.6, H * 0.6);
+      var gr = c.createRadialGradient(0, 0, 0, 0, 0, 1);
+      gr.addColorStop(0, col); gr.addColorStop(0.7, fade(col)); gr.addColorStop(1, fade(col));
+      c.fillStyle = gr; c.fillRect(-1, -1, 2, 2);
+      c.restore();
+    });
+    c.restore();
+  }
+  function paintBg(c) {
+    c.clearRect(0, 0, W, H);
+  }
+  function scene(t, c) {
+    var fs = mobile ? Math.min(W * 0.15, H * 0.15) : Math.min(W * 0.17, H * 0.21), lh = fs * 0.84;
+    c.save(); c.setTransform(dpr, 0, 0, dpr, 0, 0); c.clearRect(0, 0, W, H);
+    paintBg(c);
+    c.translate(W / 2 - 4, H * (mobile ? 0.32 : 0.5) + 6);
+    c.font = '800 ' + fs + 'px Poppins, system-ui, sans-serif';
+    c.textAlign = 'center'; c.textBaseline = 'middle';
+    var fr = [['#00bcd4', -fs * 0.045, 0], ['#ffd400', fs * 0.045, fs * 0.012], ['#ff3d8b', 0, -fs * 0.03]];
+    slides[idx].forEach(function (word, i) {
+      c.save(); c.translate(0, (i - (slides[idx].length - 1) / 2) * lh); c.rotate(tilts[idx][i] * 0.35 * Math.PI / 180);
+      if (gl > 0.02) {
+        c.globalCompositeOperation = 'multiply'; c.globalAlpha = 0.62;
+        fr.forEach(function (f) { c.fillStyle = f[0]; c.fillText(word, f[1] * gl * 1.8, f[2]); });
+      }
+      c.globalCompositeOperation = 'source-over'; c.globalAlpha = 1; c.fillStyle = ink; c.fillText(word, 0, 0);
+      c.restore();
+    });
+    c.restore();
+  }
+
+  var gl3 = null;
+  function initGlass() {
+    var glassCv = document.getElementById('glass');
+    if (!glassCv || !window.THREE || reduced) return;
+    try {
+      var T = window.THREE;
+      var r = new T.WebGLRenderer({ canvas: glassCv, alpha: true, antialias: true });
+      var cam = new T.PerspectiveCamera(30, 1, 0.1, 50); cam.position.z = 6;
+      var tex = new T.CanvasTexture(texc); tex.minFilter = T.LinearFilter; tex.generateMipmaps = false;
+      var mat = new T.ShaderMaterial({
+        uniforms: { uTex: { value: tex }, uRes: { value: new T.Vector2(1, 1) }, uStr: { value: 0.06 } },
+        vertexShader: 'varying vec3 vN;varying vec3 vP;varying vec3 vC;varying vec2 vUv;void main(){vUv=uv;vec4 mv=modelViewMatrix*vec4(position,1.);vP=mv.xyz;vC=(modelViewMatrix*vec4(normal*.5,1.)).xyz;vN=normalize(normalMatrix*normal);gl_Position=projectionMatrix*mv;}',
+        fragmentShader: 'precision highp float;uniform sampler2D uTex;uniform vec2 uRes;uniform float uStr;varying vec3 vN;varying vec3 vP;varying vec3 vC;varying vec2 vUv;void main(){vec3 n=normalize(vN);vec3 v=normalize(-vP);vec2 q=abs(vUv-.5)*2.;float e=max(q.x,q.y);vec3 d=vP-vC;float dl=length(d);vec3 dir=dl>1e-4?d/dl:vec3(0.);vec3 n2=normalize(n+dir*pow(e,2.6)*0.95);vec2 uv=gl_FragCoord.xy/uRes;vec2 ctr=vec2(.5,.5);vec2 base=ctr+(uv-ctr)*.84;vec2 off=n2.xy*uStr*(.55+.9*e);float r=texture2D(uTex,base+off*1.00).r;float g=texture2D(uTex,base+off*1.07).g;float b=texture2D(uTex,base+off*1.14).b;vec3 col=vec3(r,g,b)*.96;float f=pow(1.-abs(dot(n2,v)),3.);col=mix(col,vec3(.93,.96,1.),.07+f*.38);float rim=smoothstep(.9,1.,e);col=mix(col,vec3(1.),rim*.8);float ring=1.-smoothstep(0.,.025,abs(e-.62));col=mix(col,vec3(.9,.96,1.),ring*.4);vec3 L=normalize(vec3(-.45,.75,.6));vec3 h=normalize(L+v);col+=pow(max(dot(n2,h),0.),70.)*.7*vec3(1.,.97,.9);gl_FragColor=vec4(col,1.);}'
+      });
+      var cube = new T.Mesh(new T.BoxGeometry(1, 1, 1), mat);
+      cube.scale.setScalar(1.22);
+      var sc = new T.Scene(); sc.add(cube);
+      var rs = function () {
+        var d = Math.min(devicePixelRatio || 1, mobile ? 1 : 1.5);
+        r.setPixelRatio(d);
+        r.setSize(cv.clientWidth, cv.clientHeight, false);
+        cam.aspect = cv.clientWidth / cv.clientHeight; cam.updateProjectionMatrix();
+        mat.uniforms.uRes.value.copy(r.getDrawingBufferSize(new T.Vector2()));
+        // Phones anchor the words at 32% instead of 50%, so the cube has to sit
+        // on that line too; view height at the cube plane is 2*z*tan(fov/2).
+        // Its size follows the canvas width so a tall phone gets the same
+        // cube-to-headline ratio as the wide desktop hero.
+        var viewH = 2 * 6 * Math.tan(15 * Math.PI / 180);
+        var aspect = cv.clientWidth / Math.max(cv.clientHeight, 1);
+        cube.scale.setScalar(mobile ? Math.min(0.85, Math.max(0.26, 0.71 * aspect)) : 1.22);
+        cube.position.y = mobile ? (0.5 - 0.32) * viewH : 0;
+      };
+      rs(); addEventListener('resize', rs);
+      gl3 = function (t) {
+        cube.rotation.set(0.62 + ptr.y * 0.35 + Math.sin(t / 3200) * 0.12, 0.78 + t / 9000 + ptr.x * 0.5, 0.14 + Math.sin(t / 4100) * 0.08);
+        if (texDirty) { tex.needsUpdate = true; texDirty = false; }
+        r.render(sc, cam);
+      };
+      requestAnimationFrame(frame);
+    } catch (err) { gl3 = null; }
+  }
+
+  var lastT = 0, texDirty = true, settled = false;
+  function draw2d(t) {
+    scene(t, og);
+    g.setTransform(1, 0, 0, 1, 0, 0); g.clearRect(0, 0, cv.width, cv.height);
+    if (gl < 0.02 || gl3) {
+      g.drawImage(off, 0, 0);
+    } else {
+      var n = 26, sh = cv.height / n;
+      for (var i = 0; i < n; i++) {
+        var o = (Math.random() - 0.5) * gl * gl * 140 * dpr * (Math.random() < 0.55 ? 1 : 0.2);
+        g.drawImage(off, 0, i * sh, cv.width, sh + 1, o, i * sh, cv.width, sh + 1);
+      }
+    }
+    texDirty = true;
+    // The cube samples this copy, so it needs the wash plus the words; a
+    // transparent texture reads as black and a flat one hides the gradient.
+    texg.setTransform(1, 0, 0, 1, 0, 0);
+    texg.clearRect(0, 0, texc.width, texc.height);
+    texg.setTransform(dpr, 0, 0, dpr, 0, 0);
+    paintWash(texg);
+    texg.setTransform(1, 0, 0, 1, 0, 0);
+    texg.drawImage(off, 0, 0);
+  }
+  function frame(t) {
+    t = t || performance.now();
+    if (mobile && t - lastT < 33) { requestAnimationFrame(frame); return; }
+    lastT = t;
+    if (inView && !document.hidden) {
+      ptr.x += (ptr.tx - ptr.x) * 0.06; ptr.y += (ptr.ty - ptr.y) * 0.06;
+      if (gl > 0) {
+        gl = Math.max(0, 1 - (t - glT) / 750);
+        draw2d(t);
+        settled = true;
+      } else if (!settled) {
+        draw2d(t);
+        settled = true;
+      }
+      if (gl3) gl3(t);
+    }
+    if (gl3 || !mobile || gl > 0 || !settled) requestAnimationFrame(frame);
+  }
+
+  function go(n, user) {
+    idx = (n + slides.length) % slides.length; gl = 1; glT = performance.now(); settled = false;
+    if (num) num.textContent = String(idx + 1).padStart(2, '0');
+    dots.forEach(function (d, i) { d.classList.toggle('on', i === idx); });
+    if (user) restart();
+    requestAnimationFrame(frame);
+  }
+  function restart() {
+    clearInterval(timer);
+    if (!reduced) timer = setInterval(function () { go(idx + 1); }, 6500);
+  }
+  // Phones keep the cube spinning; the 2D layer is only redrawn when the slide changes
+  function wake() {
+    loadThree();
+    repaint();
+  }
+  ['pointerdown', 'touchstart', 'scroll', 'keydown', 'wheel'].forEach(function (ev) {
+    addEventListener(ev, wake, { passive: true, once: true });
+  });
+  var prev = document.querySelector('.hero-arrows .prev');
+  var next = document.querySelector('.hero-arrows .next');
+  if (prev) prev.addEventListener('click', function () { go(idx - 1, true); });
+  if (next) next.addEventListener('click', function () { go(idx + 1, true); });
+  dots.forEach(function (d, i) { d.addEventListener('click', function () { go(i, true); }); });
+  addEventListener('keydown', function (e) {
+    if (!inView) return;
+    if (e.key === 'ArrowRight') go(idx + 1, true);
+    if (e.key === 'ArrowLeft') go(idx - 1, true);
+  });
+  restart();
+  if (loading) { loading.textContent = 'RENDERING'; setTimeout(function () { loading.style.opacity = 0; }, 1200); }
+
+  requestAnimationFrame(frame);
+
+  var threeStarted = false;
+  function loadThree() {
+    if (reduced || threeStarted) return;
+    threeStarted = true;
+    var s = document.createElement('script');
+    s.src = 'https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js';
+    s.onload = initGlass;
+    document.head.appendChild(s);
+  }
+  if (!reduced) addEventListener('load', loadThree);
+  addEventListener('load', refresh);
+})();
+</script>
+<!-- CASE DETAIL MODAL -->
+<div class="modal-overlay" id="caseDetailOverlay" role="dialog" aria-modal="true" aria-labelledby="caseDetailTitle" aria-hidden="true">
+  <div class="modal-card case-detail-card" role="document">
+    <button type="button" class="modal-close" id="caseDetailClose" aria-label="Close case details" onclick="closeCaseDetail()">&times;</button>
+    <div id="caseDetailBody">
+      <div class="case-detail-loading">Loading case details&hellip;</div>
+    </div>
+  </div>
+</div>
+<script src="/app.js"></script>
+</body>
+</html>
