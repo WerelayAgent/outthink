@@ -9,12 +9,16 @@
     "cluster": "mainnet-beta",
     "rpcUrl": "https://api.mainnet-beta.solana.com",
     "explorerUrl": "https://solscan.io",
+    "tokenAddress": "GtGYN5QY5trWxxMePGgoE6AD1r1YgfBnMLWuR3Knpump",
+    "mint": "GtGYN5QY5trWxxMePGgoE6AD1r1YgfBnMLWuR3Knpump",
     "memoProgram": "MemoSq4gqABAXKb96qnH8TysNcWxMyWCqXgDLGmfcHr",
     "writerReady": true,
     "solana": {
       "cluster": "mainnet-beta",
       "rpcUrl": "https://api.mainnet-beta.solana.com",
       "explorerUrl": "https://solscan.io",
+      "tokenAddress": "GtGYN5QY5trWxxMePGgoE6AD1r1YgfBnMLWuR3Knpump",
+      "mint": "GtGYN5QY5trWxxMePGgoE6AD1r1YgfBnMLWuR3Knpump",
       "memoProgram": "MemoSq4gqABAXKb96qnH8TysNcWxMyWCqXgDLGmfcHr",
       "writerReady": true
     }

@@ -13,9 +13,10 @@ OutThink AI pits verified human ground-truth expertise against frontier AI model
 - **Cognitive Matrix**: Multi-axis radar diagram mapping machine blindspots across temporal latency, regulatory statute changes, cross-domain nuance, and numerical precision.
 - **Case Vault**: Cryptographically verified zero-knowledge benchmark hashes with peer-reviewed consensus mechanisms.
 - **Viral Cards Studio**: Custom 3D badge and card generator for human experts to showcase model defeat proofs.
-- **$OUTTHINK Tokenomics (Live on pump.fun)
-- Fair launched on Solana via pump.fun
-- Dev 0% supply, community verified ground-truth mining**: Fixed supply emissions, staking pools, and dataset licensing distribution.
+- **Contract Address (CA)**: `GtGYN5QY5trWxxMePGgoE6AD1r1YgfBnMLWuR3Knpump`
+- **pump.fun Trade**: [https://pump.fun/coin/GtGYN5QY5trWxxMePGgoE6AD1r1YgfBnMLWuR3Knpump](https://pump.fun/coin/GtGYN5QY5trWxxMePGgoE6AD1r1YgfBnMLWuR3Knpump)
+- **Tokenomics**: Fixed supply emissions, staking pools, and dataset licensing distribution.
+- Fair launched on Solana via pump.fun (Dev 0% supply, community verified ground-truth mining).
 
 ---
 
