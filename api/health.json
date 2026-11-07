@@ -1,1 +1,28 @@
-{"status":"healthy","name":"OutThink AI: Experts vs AI","version":"1.0.0","commit":"c1abdf2ed5497a4af1cc124a000aecdcff3223bf","chain":{"chainId":4663,"name":"Robinhood Chain","rpcUrl":"https://4663.rpc.thirdweb.com","writerReady":true,"active":"evm","solana":{"cluster":"devnet","rpcUrl":"https://api.devnet.solana.com","writerReady":false,"writer":null,"writerExplorer":null,"memoProgram":"MemoSq4gqABAXKb96qnH8TysNcWxMyWCqXgDLGmfcHr"},"evm":{"chainId":4663,"name":"Robinhood Chain","rpcUrl":"https://4663.rpc.thirdweb.com","explorerUrl":"https://robinhoodchain.blockscout.com","registryAddress":"0x392CB7a92Cf7816Cba60243b3F22DB3fd4094CC7","writer":"0x6D3b3857F8Ab990C3BA3AEEc738B6630A377EBB6","writerReady":true}},"aiPanel":{"provider":"groq","configured":true},"demoRows":"visible","timestamp":"2026-11-07T06:23:38.583Z"}
+{
+  "status": "healthy",
+  "name": "OutThink AI: Experts vs AI",
+  "version": "1.0.0",
+  "commit": "c1abdf2ed5497a4af1cc124a000aecdcff3223bf",
+  "chain": {
+    "name": "Solana",
+    "active": "solana",
+    "cluster": "mainnet-beta",
+    "rpcUrl": "https://api.mainnet-beta.solana.com",
+    "explorerUrl": "https://solscan.io",
+    "memoProgram": "MemoSq4gqABAXKb96qnH8TysNcWxMyWCqXgDLGmfcHr",
+    "writerReady": true,
+    "solana": {
+      "cluster": "mainnet-beta",
+      "rpcUrl": "https://api.mainnet-beta.solana.com",
+      "explorerUrl": "https://solscan.io",
+      "memoProgram": "MemoSq4gqABAXKb96qnH8TysNcWxMyWCqXgDLGmfcHr",
+      "writerReady": true
+    }
+  },
+  "aiPanel": {
+    "provider": "groq",
+    "configured": true
+  },
+  "demoRows": "visible",
+  "timestamp": "2026-11-07T06:23:38.583Z"
+}

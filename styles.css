@@ -4946,3 +4946,59 @@ body.modal-scroll-lock { overflow: hidden; }
   .case-detail-fail { margin-left: 0; }
 }
 
+
+
+/* Pump.fun Live Badge and CTA */
+.hero-ca-pump code {
+  background: color-mix(in srgb, #10b981 14%, transparent) !important;
+  border-color: rgba(16, 185, 129, 0.4) !important;
+  padding: 6px 14px !important;
+}
+.pump-badge-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  color: var(--os-ink);
+  text-decoration: none;
+  font-weight: 600;
+}
+.pump-live-pulse {
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #10b981;
+  box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.7);
+  animation: pumpPulse 1.8s infinite;
+}
+@keyframes pumpPulse {
+  0% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.7); }
+  70% { transform: scale(1.05); box-shadow: 0 0 0 7px rgba(16, 185, 129, 0); }
+  100% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(16, 185, 129, 0); }
+}
+.hero-pump-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 5px 13px;
+  border-radius: 999px;
+  background: #10b981;
+  color: #ffffff !important;
+  font-weight: 600;
+  font-size: 11px;
+  text-decoration: none;
+  transition: all 0.2s ease;
+  box-shadow: 0 2px 8px rgba(16, 185, 129, 0.25);
+}
+.hero-pump-btn:hover {
+  background: #059669;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(16, 185, 129, 0.35);
+}
+.logo-img {
+  width: 32px;
+  height: 32px;
+  border-radius: 8px;
+  object-fit: contain;
+  display: inline-block !important;
+}

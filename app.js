@@ -288,7 +288,7 @@ function getDynamicLogoPath(domain, colorMode) {
     logoFile = `logo-diagnostics-trades-${modeKey}.png`;
   }
 
-  return `/assets/${logoFile}`;
+  return `assets/${logoFile}`;
 }
 
 function updateDynamicLogoAndFavicon(domain, colorMode) {
@@ -1492,7 +1492,7 @@ function setupDeclassificationLens() {
       playHapticSound("pulse");
       onchainResult.style.display = "block";
       onchainResult.innerHTML = `
-        <span style="color:var(--text-muted)">Checking Robinhood Chain RPC...</span>
+        <span style="color:var(--text-muted)">Checking Solana RPC...</span>
       `;
 
       setTimeout(() => {
@@ -1607,7 +1607,7 @@ function setupShareCardStudio() {
       ctx.strokeRect(80, 440, 720, 60);
       ctx.fillStyle = cardSecondary;
       ctx.font = `20px ${tokens.mono || "monospace"}`;
-      ctx.fillText("Proof: content hash anchored per case • Robinhood Chain", 105, 478);
+      ctx.fillText("Proof: content hash anchored per case • Solana", 105, 478);
 
       // Trigger download
       const imageURL = canvas.toDataURL("image/png");
@@ -1991,7 +1991,7 @@ function setupCaseSubmission() {
         const data = await res.json();
         if (data.hasPII) {
           piiAlert.style.display = "flex";
-          piiAlert.innerHTML = `<span style="display:inline-flex;align-items:center;gap:6px">${(window.renderIcon ? window.renderIcon('shield', {size: 18}) : '')} <strong>PII/PHI Shield Active:</strong></span> Detected ${data.findings.map(f => f.type).join(", ")}. Will be cryptographically redacted before Robinhood Chain hashing.`;
+          piiAlert.innerHTML = `<span style="display:inline-flex;align-items:center;gap:6px">${(window.renderIcon ? window.renderIcon('shield', {size: 18}) : '')} <strong>PII/PHI Shield Active:</strong></span> Detected ${data.findings.map(f => f.type).join(", ")}. Will be cryptographically redacted before Solana hashing.`;
           playHapticSound("pulse");
         } else {
           piiAlert.style.display = "none";
@@ -2074,7 +2074,7 @@ function setupCaseSubmission() {
               <p><strong>AI failure rate:</strong> ${tested ? rate + "% (" + failed + "/" + tested + " graded models wrong)" : "no model produced a gradeable answer"}</p>
               <p><strong>Status:</strong> ${String(record.status || "").toUpperCase()}</p>
               ${Number(record.stake_deposited || 0) > 0 ? `<p style="color:var(--text-muted)"><strong>Anti-spam stake:</strong> ${record.stake_deposited} $OUTTHINK locked, refunded on consensus approval</p>` : ""}
-              <p style="font-family:var(--mono);font-size:12px;margin-top:6px;word-break:break-all">Content hash: ${record.content_hash}${onchainHash ? "<br>Robinhood Chain tx: " + onchainHash : ""}</p>
+              <p style="font-family:var(--mono);font-size:12px;margin-top:6px;word-break:break-all">Content hash: ${record.content_hash}${onchainHash ? "<br>Solana tx: " + onchainHash : ""}</p>
             </div>`;
           };
 
@@ -2991,7 +2991,7 @@ function setupOnboardingFlow() {
       playHapticSound("pulse");
       if (submitBtn) {
         submitBtn.disabled = true;
-        submitBtn.textContent = "Anchoring on Robinhood Chain...";
+        submitBtn.textContent = "Anchoring on Solana...";
       }
 
       const tier = Number(tierSelect.value || 0);
@@ -3238,7 +3238,7 @@ function setupSprintsFlow() {
 }
 
 // --------------------------------------------------------------------------
-// 14. Web3 Wallet Integration (Robinhood Chain ID 4663)
+// 14. Web3 Wallet Integration (Solana Mainnet)
 // --------------------------------------------------------------------------
 function authHeaders(extra) {
   let token = "";
@@ -3286,20 +3286,19 @@ function bs58Encode(bytes) {
 }
 
 async function connectWalletAccount() {
-  // Robinhood Chain is the active target, so an EVM wallet is preferred; a Solana
-  // wallet still works because the auth layer accepts both signature schemes.
-  if (typeof window.ethereum !== "undefined") {
-    const accounts = await window.ethereum.request({ method: "eth_requestAccounts" });
-    if (accounts && accounts[0]) return { address: accounts[0], kind: "evm" };
-  }
+  // Solana is the primary network for OutThink AI ($OUTTHINK on pump.fun)
   const sol = solanaWallet();
   if (sol) {
     const res = await sol.connect();
     const key = res && res.publicKey ? res.publicKey : sol.publicKey;
-    if (!key) throw new Error("No wallet account selected");
+    if (!key) throw new Error("No Solana account selected");
     return { address: key.toString(), kind: "solana" };
   }
-  throw new Error("No wallet found in this browser");
+  if (typeof window.ethereum !== "undefined") {
+    const accounts = await window.ethereum.request({ method: "eth_requestAccounts" });
+    if (accounts && accounts[0]) return { address: accounts[0], kind: "evm" };
+  }
+  throw new Error("No Solana wallet found. Please install Phantom, Solflare, or Backpack.");
 }
 
 async function signMessageWith(kind, account, message) {
@@ -3349,7 +3348,7 @@ function loadChainInfo() {
 function explorerTxUrl(hash) {
   if (!hash) return "";
   if (/^0x[0-9a-fA-F]{64}$/.test(hash)) {
-    var base = (window.__chainInfo && window.__chainInfo.evm && window.__chainInfo.evm.explorerUrl) || "https://robinhoodchain.blockscout.com";
+    var base = (window.__chainInfo && window.__chainInfo.evm && window.__chainInfo.evm.explorerUrl) || "https://solscan.io";
     return base.replace(/\/$/, "") + "/tx/" + hash;
   }
   const cluster = (window.__chainInfo && window.__chainInfo.solana && window.__chainInfo.solana.cluster) || "mainnet-beta";
@@ -3398,34 +3397,24 @@ function setupWeb3Wallet() {
   const drawerCtaSection = document.getElementById("drawerCtaSection");
   const drawerConnectSection = document.getElementById("drawerConnectSection");
 
-  // Chain parameters come from /api/health (chain.evm), so testnet 46630 and
-  // mainnet 4663 both work without editing this file.
-  const RH_FALLBACK = {
-    chainId: 4663,
-    chainName: "Robinhood Chain",
-    rpcUrl: "https://4663.rpc.thirdweb.com",
-    explorerUrl: "https://robinhoodchain.blockscout.com"
+  // Chain parameters come from /api/health (chain.solana)
+  const SOL_FALLBACK = {
+    chainName: "Solana Mainnet",
+    explorerUrl: "https://solscan.io"
   };
 
   function rhChainParams() {
-    const evm = (window.__chainInfo && window.__chainInfo.evm) || {};
-    const id = Number(evm.chainId || RH_FALLBACK.chainId);
+    const chain = (window.__chainInfo && window.__chainInfo.solana) || {};
     return {
-      chainId: id,
-      chainIdHex: "0x" + id.toString(16),
-      chainName: evm.name || RH_FALLBACK.chainName,
-      rpcUrl: evm.rpcUrl || RH_FALLBACK.rpcUrl,
-      explorerUrl: evm.explorerUrl || RH_FALLBACK.explorerUrl
+      chainName: chain.name || SOL_FALLBACK.chainName,
+      explorerUrl: chain.explorerUrl || SOL_FALLBACK.explorerUrl
     };
   }
 
-  function robinhoodChainParams() {
+  function solanaChainParams() {
     const c = rhChainParams();
     return {
-      chainId: c.chainIdHex,
       chainName: c.chainName,
-      nativeCurrency: { name: "Ether", symbol: "ETH", decimals: 18 },
-      rpcUrls: [c.rpcUrl],
       blockExplorerUrls: [c.explorerUrl]
     };
   }
@@ -3465,7 +3454,7 @@ function setupWeb3Wallet() {
       document.body.classList.remove("wallet-connected");
       btn.classList.remove("connected", "wrong-network");
       btn.classList.add("main-cta");
-      btn.title = "Connect Wallet (MetaMask / Rabby on Robinhood Chain)";
+      btn.title = "Connect Wallet (Phantom / Solflare on Solana)";
       label.textContent = "Connect Wallet";
       if (navSubmitBtn) {
         navSubmitBtn.style.display = "none";
@@ -3487,7 +3476,7 @@ function setupWeb3Wallet() {
     if (isWrongNetwork) {
       btn.classList.add("wrong-network");
       label.textContent = "Wrong Net";
-      btn.title = "Your EVM wallet is on another network. Switch it to " + rhChainParams().chainName + " (ID " + rhChainParams().chainId + ").";
+      btn.title = "Please switch your wallet to Solana Mainnet.";
     }
   }
 
@@ -3495,41 +3484,12 @@ function setupWeb3Wallet() {
   updateWalletUI(currentAccount);
 
   async function checkNetwork() {
-    // No EVM wallet at all: a Solana wallet is the only option, so do not warn.
-    if (!window.ethereum && solanaWallet()) return true;
-    if (!window.ethereum) return true;
-    try {
-      const chainId = await window.ethereum.request({ method: "eth_chainId" });
-      return chainId === rhChainParams().chainIdHex;
-    } catch {
-      return true;
-    }
+    // Solana wallet is primary
+    return true;
   }
 
   async function switchNetwork() {
-    if (!window.ethereum) return;
-    try {
-      await window.ethereum.request({
-        method: "wallet_switchEthereumChain",
-        params: [{ chainId: rhChainParams().chainIdHex }]
-      });
-      return true;
-    } catch (switchError) {
-      if (switchError.code === 4902) {
-        try {
-          await window.ethereum.request({
-            method: "wallet_addEthereumChain",
-            params: [robinhoodChainParams()]
-          });
-          return true;
-        } catch (addError) {
-          showToast("Failed to add Robinhood Chain to wallet: " + addError.message, "error");
-          return false;
-        }
-      }
-      showToast("Please switch your EVM wallet to " + rhChainParams().chainName + " (ID " + rhChainParams().chainId + ").", "error");
-      return false;
-    }
+    return true;
   }
 
   // Shown when the browser has no injected wallet: give the visitor a way forward.
